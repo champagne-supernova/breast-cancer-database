@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang='en'>
+	{% load staticfiles %}
+	<head>
+		<meta charset='utf-8'>
+		<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+		<meta name='viewport' content='width=device-width, initial-scale=1'>
+		<meta name='description' content=''>
+		<meta name='author' content=''>
+		<!--<link rel='icon' href='static/bootstrap/favicon.ico'>-->
+
+		<title> Signin project report</title>
+		<link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel='stylesheet'>
+		<link href="{% static "bootstrap/css/ie10-viewport-bug-workaround.css" %}" rel='stylesheet'>
+		<link href="{% static "bootstrap/css/signin.css" %}" rel='stylesheet'>
+		<script src="{% static "bootstrap/js/ie-emulation-modes-warning.js" %}"></script>
+	</head>
+	<body background="{% static "image/background.jpg" %}">
+		<img src="{% static "image/honor.png" %}" width="60" height="60" style="position:absolute; left:650px; top:70px;"/>
+		<div class='container'>
+			<br /><br /><br /><br /><br /><br />
+			<form method='post' class='form-signin' action="{% url 'signin_page' %}">
+				{% csrf_token %}
+				<!--<h2 class='form-signin-heading'>Report Entrance</h2>-->
+				<label for='inputUsername' id='inputUsername' class='form-control' placeholder='User names' required autofocus>
+				<input type="username" class='form-control' placeholder='Account' name="user_name" required />
+				<label for="inputPassword" class="sr-only">Password</label>
+				<br />
+				<input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required />
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" value="remember-me"> Remember me
+					</label>
+				</div>
+				<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+				<br />
+				<a href="{% url 'forgot_psw' %}">Forgot your password?</a></p>
+			</form>
+		</div>
+		<script src="{% static "bootstrap/js/ie10-viewport-bug-workaround.js" %}"></script>
+	</body>
+</html>
+
