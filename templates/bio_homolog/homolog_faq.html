@@ -1,0 +1,82 @@
+{% extends 'bio_homolog/bio_homolog.base.html' %}
+{% load staticfiles %}
+{% block title %} FAQ Soybean Homolog Database {% endblock %}
+{% block css_js_after %}
+<link href="{% static "css/doc.css" %}" rel="stylesheet">
+<link href="{% static "css/homolog_faq.css" %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+<div class="panel panel-default">
+	<div class="panel-heading" style="height: 40px; padding: 10px 20px 10px 20px">
+		<h3 class="panel-title"><span class="glyphicon glyphicon-question-sign"></span> FAQ</h3>
+	</div>
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-md-12">
+				<h4>1.  Introduction</h4>
+				<ul>
+					<li>
+						<h5>What is Plant Homolog Database?</h5>
+						<p class="text-justify">
+							Plant Homolog Database (PHD; http://homolog.ic4r.org), a sub-project of IC4R (Information Commons for Rice; http://ic4r.org), is a database composed of homologous genes among diverse plant species. It combines phylogenetic and heuristic best-match approaches for homology identification, covering 17 plant species (including rice, Arabidopsis, tomato, maize, sorghum, etc) and yielding 14,739 homologous groups.
+						</p>
+					</li>
+				</ul>
+				<h4>2.  Datasets and Method</h4>
+				<ul>
+					<li>
+						<h5> What datasets are used in Plant Homolog Database?</h5>
+						<p class="text-justify">
+							Plant Homolog Database includes genes from 10 well-assembled genomes of species under the genus Oryza as well as other 7 genomes of important model plants and major food crops. All the protein coding sequences are derived from Ensembl plant, and the evolution history of these species is according to NCBI taxonomy.
+						</p>
+					</li>
+					<li>
+						<h5> What procedures are used for homology identification?</h5>
+						<p class="text-justify">
+							Plant Homolog Database combines phylogenetic and heuristic best-match approaches for homology identification, which is similar with GreenPhyl DB and Ensembl plants. Briefly, OrthoMCL was used to get the homolog group and the multiple alignment of each homolog group was done with MAFFT and trimmed by trimAl. Phylogenetic tree was constructed with PhyML and the amino acid replacement model was optimized by ProtTest. Finally, we identified ortholog of each group with SDI and RIO from the Forester package.
+						</p>
+					</li>
+				</ul>
+				<h4>3. Database Usage</h4>
+				<ul>
+					<li>
+						<h5> Where can I find the related information of a species of interest?</h5>
+						<p class="text-justify">
+							You can search with species name or synonyms in the navigation search box. Also you can visit species page and select the species of interest to get corresponding information. The species information, related homolog group and genes will be presented. Examples are shown in the figures below.
+						</p>
+						<img src="{% static "images/portfolio-8.jpg" %}" width="50%" />
+					</li>
+					<li>
+						<h5> How can I obtain the information for a specific gene?</h5>
+						<p class="text-justify">
+							You can search the gene id or protein id in the search box. The information of the homolog group which the gene belongs to, phylogenetic tree of the homolog group, Ka/Ks, the information of speciation/duplication event and so on will be presented in the result page. All the above information can be downloaded as your wish.
+Examples of the search results are shown below in the figure.
+						</p>
+						<img src="{% static "images/portfolio-8.jpg" %}" width="50%" />			
+					</li>
+					<li>
+						<h5>How can I get information of a homolog group?</h5>
+						<p class="text-justify">
+							Homolog group ID are defined in-house by The IC4R Project Consortium. You can browse the list of the homolog group on the group page. If you are interested in some group, clicking on the group ID will direct you to the group summary page. Navigation bar on the top of group summary page is a useful tool for quickly seeking the information of interest.
+						</p>
+						<img src="{% static "images/portfolio-8.jpg" %}" width="50%" />
+					</li>
+					<li>
+						<h5>Can I download the data?</h5>
+						<p class="text-justify">
+							Of course, you can. The data of interest can be downloaded in corresponding panel.
+						</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+{% endblock %}
+
+
+
+

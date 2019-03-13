@@ -1,0 +1,548 @@
+{% extends 'bio_expr/bio_expr.base.html' %}
+{% load staticfiles %}
+{% block css_js_after %}
+<link href="{% static "css/custom_expr.css" %}" rel="stylesheet">
+
+<script src="{% static "plugins/jquery-1.11.2.min.js" %}"></script>
+<script src="{% static "js/highcharts-custom.js" %}"></script>
+<script src="{% static "js/charts.js" %}"></script>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <script>
+	    var _hmt = _hmt || [];
+	    (function () {
+	        var hm = document.createElement("script");
+	        hm.src = "//hm.baidu.com/hm.js?3485b34ebae86f97fc6537472457f99f";
+	        var s = document.getElementsByTagName("script")[0];
+	        s.parentNode.insertBefore(hm, s);
+	    })();
+	</script>
+    
+	<div class="panel panel-default">
+	    <div class="panel-heading">
+	        <h3 class="panel-title"><i class="fa fa-flag"></i> Gene Expression Profiles</h3>
+	    </div>
+	    <div class="panel-body">
+	        <ul class="list-unstyled">
+	            <li>
+					<label class="label label-define label-primary">Gene:</label>
+					{% for gene in search_gene_names %}
+						<a class="gene_tag disabled btn btn-default btn-xs">{{ gene }}</a>
+					{% endfor %}
+	            </li>
+	        </ul>
+			<label class="label label-define label-default">Number of Expression Profiles: {{ expr_num }}</label>
+            <br><br>
+            <table class="table table-condensed">
+                <tr id="cutoff-default">
+                    <th class="col-md-1">Cutoff:</th>
+                    <td>
+                        <ul class="list-inline">
+                            <li><a href="#">0.1</a></li>
+                            <li><a href="#">0.5</a></li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">10</a></li>
+                            <li>
+							<input type="text" name="cutoff" style="width:50px; height:25px" data-url="#" data-cutoff="" id="link" value=""/>{{ cutoff }}<input type="submit" class="btn btn-xs btn-default" value="GO" id="ev"/>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>Project:</th>
+                    <td>
+                        <ul class="list-inline">
+                            <li><a href="#">SRP013556</a></li>
+                            <li><a href="#">SRP035332</a></li>
+                            <li><a href="#">SRP028376</a></li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>Platform:</th>
+                    <td>
+                        <ul class="list-inline">
+                            <li><a href="#">Illumina Genome Analyzer II</a></li>
+                            <li><a href="#">Illumina Genome Analyzer IIx</a></li>
+                            <li><a href="#">Illumina HiSeq 2000</a></li>
+                        </ul>
+                    </td>
+                </tr>
+				
+				<tr>
+					<th>Hormone:</th>
+					<td>
+						<ul class="list-inline">
+							{% for content in homone %}
+								<li><a href="#">{{ content }}</a></li>
+							{% endfor %}
+						</ul>
+					</td>
+				</tr>
+					
+                <tr>
+                    <th>Tissue:</th>
+                    <td>
+						<ul class="list-inline">
+							{% for content in tissue %}
+							<li><a href="#">{{ content }}</a></li>
+							{% endfor %}
+                        </ul>
+                    </td>
+                </tr>
+                
+                
+                <tr>
+                    <th>Stage:</th>
+                    <td>
+                        <ul class="list-inline">
+                            <li><a href="#">before flowering</a></li>
+                            <li><a href="#">0.4-mm anthers</a></li>
+                        </ul>
+                    </td>
+                </tr>
+            
+                <tr>
+                    <th>
+                        <span>Experiment</span>:
+                    </th>
+                    <td>
+                        <ul class="list-inline">
+                            <li><a href="#">Root_24h-Pi_r1</a></li>
+                            <li><a href="#">Root_24h-Pi_r2</a></li>
+                            <li><a href="#">Seed_aleurone_Mock_4h</a></li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+
+            <div class="well" role="alert">
+                <div class="btn-group" role="group" aria-label="...">
+                    <button type="button" data-url="#" id="line" class="btn btn-primary btn-xs">
+                    	Line chart
+                    </button>
+                    
+                    <button type="button" data-url="#" id="heatmap" class="btn btn-warning btn-xs">
+                        Heat map chart
+                    </button>
+                    
+                </div>
+                <p class="text-info">
+                	Tip: please select gene(s) of interest and click the above button to generate line chart or heatmap chart. Drag the mouse to decide what items you would like to zoom.
+                </p>
+                <div id="charts" data-url="gene=Os01g0803200&amp;cutoff=&amp;"></div>
+            </div>
+	        <a class="btn btn-info" data-toggle="collapse" href="#showtable" aria-expanded="false">
+	            Show/Hidden table
+	        </a>
+	        <div class="table-responsive collapse" id="showtable">
+	            <table class="table table-striped table-hover" id="dataTable">
+	                <thead>
+	                    <tr>
+	                        <th>Box plot</th>
+	                        <th>Gene ID</th>
+	                        <th>Project ID</th>
+	                        <th>Experiment ID</th>
+	                        <th>Experiment name</th>  
+	                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                            </td>
+                        </tr>
+	                 </tbody>
+	             </table>
+	        </div>
+	    </div>
+	</div>
+</div>
+<script>
+	var data = [{"category":["Anther_0.4mm","Leafblades_blast-inoculation_24h","Leaf_35S:OSH1_-GR+DEX_24h_r1","Leaf_35S:OSH1_-GR+DEX_24h_r2","Leaf_35S:OSH1_-GR+DEX_3h_r1","Leaf_35S:OSH1_-GR+DEX_3h_r2","Leaf_35S:OSH1_-GR+DEX_6h_r1","Leaf_35S:OSH1_-GR+DEX_6h_r2","Leaf_35S:OSH1_-GR+DEX_r1","Leaf_35S:OSH1_-GR+DEX_r2","Leaf_93-11xNPB","Leaf_Nipponbare","Leaf_NPBx93-11","Leaf_Osbhlh148-DR-1","Leaf_Osbhlh148-DR-2","Leaf_Osbhlh148-WW-1","Leaf_Osbhlh148-WW-2","Leaf_Oshsfa2e-DR_r1","Leaf_Oshsfa2e-DR_r2","Leaf_Oshsfa2e-WW_r1","Leaf_Oshsfa2e-WW_r2","Leaf_r1","Leaf_r2","Leaf_r3","Leaf_T2-PiZt-11-R","Leaf_T2-PiZt-11-S","Leaf_T4-PiZt-11-R","Leaf_T4-PiZt-11-S","Leaf_T6-Pi9-R","Leaf_T6-PiZt-11-R","Leaf_T6-Spin1i-1-R","Leaf_TP309","Leaf_WT-DEX_24h_r1","Leaf_WT-DEX_24h_r2","Leaf_WT-DEX_3h_r1","Leaf_WT-DEX_3h_r2","Leaf_WT-DEX_6h_r1","Leaf_WT-DEX_6h_r2","Leaf_WT-DEX_r1","Leaf_WT-DEX_r2","Leaf_WT-DR_SRP052306_r1","Leaf_WT-DR_SRP052306_r2","Leaf_WT-DR_SRP052309_r1","Leaf_WT-DR_SRP052309_r2","Leaf_WT-DR_SRP052310_r1","Leaf_WT-DR_SRP052310_r2","Leaf_WT-WW_SRP052306_r1","Leaf_WT-WW_SRP052306_r2","Leaf_WT-WW_SRP052309_r1","Leaf_WT-WW_SRP052309_r2","Leaf_WT-WW_SRP052310_r1","Leaf_WT-WW_SRP052310_r2","Leaf_WT2007","Leaf_WT2011","Panicle_Young_0.5cm","Pistil","Root_1h+Pi_r1","Root_1h+Pi_r2","Root_1h+Pi_r3","Root_1h-Pi_r1","Root_1h-Pi_r2","Root_1h-Pi_r3","Root_21d+1h+Pi_r1","Root_21d+1h+Pi_r2","Root_21d+1h+Pi_r3","Root_21d+1h-Pi_r1","Root_21d+1h-Pi_r2","Root_21d+1h-Pi_r3","Root_21d+1hRe_r1","Root_21d+1hRe_r2","Root_21d+1hRe_r3","Root_21d+24h+Pi_r1","Root_21d+24h+Pi_r2","Root_21d+24h+Pi_r3","Root_21d+24h-Pi_r1","Root_21d+24h-Pi_r2","Root_21d+24h-Pi_r3","Root_21d+24hRe_r1","Root_21d+24hRe_r2","Root_21d+24hRe_r3","Root_21d+6h+Pi_r1","Root_21d+6h+Pi_r2","Root_21d+6h+Pi_r3","Root_21d+6h-Pi_r1","Root_21d+6h-Pi_r2","Root_21d+6h-Pi_r3","Root_21d+6hRe_r1","Root_21d+6hRe_r2","Root_21d+6hRe_r3","Root_21dd+Pi_r1","Root_21dd+Pi_r2","Root_21dd+Pi_r3","Root_21dd-Pi_r1","Root_21dd-Pi_r2","Root_21dd-Pi_r3","Root_24h+Pi_r1","Root_24h+Pi_r2","Root_24h+Pi_r3","Root_24h-Pi_r1","Root_24h-Pi_r2","Root_24h-Pi_r3","Root_3d+Pi_r1","Root_3d+Pi_r2","Root_3d+Pi_r3","Root_3d-Pi_r1","Root_3d-Pi_r2","Root_3d-Pi_r3","Root_6h+Pi_r1","Root_6h+Pi_r2","Root_6h+Pi_r3","Root_6h-Pi_r1","Root_6h-Pi_r2","Root_6h-Pi_r3","Root_7d+Pi_r1","Root_7d+Pi_r2","Root_7d+Pi_r3","Root_7d-Pi_r1","Root_7d-Pi_r2","Root_7d-Pi_r3","Root_Cd_0h_r1","Root_Cd_0h_r2","Root_Cd_0h_r3","Root_Cd_1h_r1","Root_Cd_1h_r2","Root_Cd_1h_r3","Root_Cd_24h_r1","Root_Cd_24h_r2","Root_Cd_24h_r3","Seed_5DAP","Seed_aleurone_ABA-20uM&GA-2uM_4h","Seed_aleurone_ABA-20uM_4h","Seed_aleurone_GA-1uM_4h","Seed_aleurone_Mock_4h","Shoot_14DAG","Shoot_1h+Pi_r1","Shoot_1h+Pi_r2","Shoot_1h+Pi_r3","Shoot_1h-Pi_r1","Shoot_1h-Pi_r2","Shoot_1h-Pi_r3","Shoot_21d+1h+Pi_r1","Shoot_21d+1h+Pi_r2","Shoot_21d+1h+Pi_r3","Shoot_21d+1h-Pi_r1","Shoot_21d+1h-Pi_r2","Shoot_21d+1h-Pi_r3","Shoot_21d+1hRe_r1","Shoot_21d+1hRe_r2","Shoot_21d+1hRe_r3","Shoot_21d+24h+Pi_r1","Shoot_21d+24h+Pi_r2","Shoot_21d+24h+Pi_r3","Shoot_21d+24h-Pi_r1","Shoot_21d+24h-Pi_r2","Shoot_21d+24h-Pi_r3","Shoot_21d+24hRe_r1","Shoot_21d+24hRe_r2","Shoot_21d+24hRe_r3","Shoot_21d+6h+Pi_r1","Shoot_21d+6h+Pi_r2","Shoot_21d+6h+Pi_r3","Shoot_21d+6h-Pi_r1","Shoot_21d+6h-Pi_r2","Shoot_21d+6h-Pi_r3","Shoot_21d+6hRe_r1","Shoot_21d+6hRe_r2","Shoot_21d+6hRe_r3","Shoot_21dd+Pi_r1","Shoot_21dd+Pi_r2","Shoot_21dd+Pi_r3","Shoot_21dd-Pi_r1","Shoot_21dd-Pi_r2","Shoot_21dd-Pi_r3","Shoot_24h+Pi_r1","Shoot_24h+Pi_r2","Shoot_24h+Pi_r3","Shoot_24h-Pi_r1","Shoot_24h-Pi_r2","Shoot_24h-Pi_r3","Shoot_3d+Pi_r1","Shoot_3d+Pi_r2","Shoot_3d+Pi_r3","Shoot_3d-Pi_r1","Shoot_3d-Pi_r2","Shoot_3d-Pi_r3","Shoot_6h+Pi_r1","Shoot_6h+Pi_r2","Shoot_6h+Pi_r3","Shoot_6h-Pi_r1","Shoot_6h-Pi_r2","Shoot_6h-Pi_r3","Shoot_7d+Pi_r1","Shoot_7d+Pi_r2","Shoot_7d+Pi_r3","Shoot_7d-Pi_r1","Shoot_7d-Pi_r2","Shoot_7d-Pi_r3","Shoot_Cd_0h_r1","Shoot_Cd_0h_r2","Shoot_Cd_0h_r3","Shoot_Cd_1h_r1","Shoot_Cd_1h_r2","Shoot_Cd_1h_r3","Shoot_Cd_24h_r1","Shoot_Cd_24h_r2","Shoot_Cd_24h_r3","Shoot_MET1-2_mm","Shoot_MET1-2_Mm","Shoot_MET1-2_WT"],"data":[32.4629,0,7.41092,0,0,11.4694,11.0831,9.0416,0,8.40937,0,395.476,507.302,759.532,1171.88,600.006,0,0,722.626,868.589,901.618,0,0,0,0,0,0,0,0,0,1345.5,0,8.07161,11.3595,0,0,7.84668,7.46569,7.14021,7.17815,0,0,0,0,0,0,0,0,0,0,0,0,1517.03,0,0,0,0,220.196,166.039,0,0,0,0,0,0,226.15,0,0,0,0,0,0,0,215.63,0,0,0,0,0,0,0,0,480.491,380.096,0,0,0,363.705,0,0,0,0,0,0,0,0,0,0,0,0,209.375,205.377,0,0,0,0,0,295.616,0,260.227,0,0,0,0,0,0,0,0,0,670.023,482.805,616.997,0,0,0,0,0,0,0,0,0,0,3535.61,0,35.6996,35.8247,30.165,29.3482,26.474,43.6184,83.1845,42.179,0,100.374,99.7474,0,0,0,77.4004,77.5449,0,0,0,0,63.4925,0,0,0,0,213.473,174.807,249.038,0,216.729,226.383,0,190.974,0,80.7069,65.3793,0,86.0544,0,26.6867,33.3877,35.3245,42.5214,21.3596,37.3914,30.782,44.8639,0,16.51,0,0,147.916,188.275,137.63,126.402,0,0,39.4047,74.9185,43.1031,36.7161,37.9105,0,207.987,290.458,235.628,377.558,0,489.606,383.241,620.585,517.203,0,0,0],"name":"Os01g0803200"},{"category":["Anther_0.4mm","Leafblades_blast-inoculation_24h","Leaf_35S:OSH1_-GR+DEX_24h_r1","Leaf_35S:OSH1_-GR+DEX_24h_r2","Leaf_35S:OSH1_-GR+DEX_3h_r1","Leaf_35S:OSH1_-GR+DEX_3h_r2","Leaf_35S:OSH1_-GR+DEX_6h_r1","Leaf_35S:OSH1_-GR+DEX_6h_r2","Leaf_35S:OSH1_-GR+DEX_r1","Leaf_35S:OSH1_-GR+DEX_r2","Leaf_93-11xNPB","Leaf_Nipponbare","Leaf_NPBx93-11","Leaf_Osbhlh148-DR-1","Leaf_Osbhlh148-DR-2","Leaf_Osbhlh148-WW-1","Leaf_Osbhlh148-WW-2","Leaf_Oshsfa2e-DR_r1","Leaf_Oshsfa2e-DR_r2","Leaf_Oshsfa2e-WW_r1","Leaf_Oshsfa2e-WW_r2","Leaf_r1","Leaf_r2","Leaf_r3","Leaf_T2-PiZt-11-R","Leaf_T2-PiZt-11-S","Leaf_T4-PiZt-11-R","Leaf_T4-PiZt-11-S","Leaf_T6-Pi9-R","Leaf_T6-PiZt-11-R","Leaf_T6-Spin1i-1-R","Leaf_TP309","Leaf_WT-DEX_24h_r1","Leaf_WT-DEX_24h_r2","Leaf_WT-DEX_3h_r1","Leaf_WT-DEX_3h_r2","Leaf_WT-DEX_6h_r1","Leaf_WT-DEX_6h_r2","Leaf_WT-DEX_r1","Leaf_WT-DEX_r2","Leaf_WT-DR_SRP052306_r1","Leaf_WT-DR_SRP052306_r2","Leaf_WT-DR_SRP052309_r1","Leaf_WT-DR_SRP052309_r2","Leaf_WT-DR_SRP052310_r1","Leaf_WT-DR_SRP052310_r2","Leaf_WT-WW_SRP052306_r1","Leaf_WT-WW_SRP052306_r2","Leaf_WT-WW_SRP052309_r1","Leaf_WT-WW_SRP052309_r2","Leaf_WT-WW_SRP052310_r1","Leaf_WT-WW_SRP052310_r2","Leaf_WT2007","Leaf_WT2011","Panicle_Young_0.5cm","Pistil","Root_1h+Pi_r1","Root_1h+Pi_r2","Root_1h+Pi_r3","Root_1h-Pi_r1","Root_1h-Pi_r2","Root_1h-Pi_r3","Root_21d+1h+Pi_r1","Root_21d+1h+Pi_r2","Root_21d+1h+Pi_r3","Root_21d+1h-Pi_r1","Root_21d+1h-Pi_r2","Root_21d+1h-Pi_r3","Root_21d+1hRe_r1","Root_21d+1hRe_r2","Root_21d+1hRe_r3","Root_21d+24h+Pi_r1","Root_21d+24h+Pi_r2","Root_21d+24h+Pi_r3","Root_21d+24h-Pi_r1","Root_21d+24h-Pi_r2","Root_21d+24h-Pi_r3","Root_21d+24hRe_r1","Root_21d+24hRe_r2","Root_21d+24hRe_r3","Root_21d+6h+Pi_r1","Root_21d+6h+Pi_r2","Root_21d+6h+Pi_r3","Root_21d+6h-Pi_r1","Root_21d+6h-Pi_r2","Root_21d+6h-Pi_r3","Root_21d+6hRe_r1","Root_21d+6hRe_r2","Root_21d+6hRe_r3","Root_21dd+Pi_r1","Root_21dd+Pi_r2","Root_21dd+Pi_r3","Root_21dd-Pi_r1","Root_21dd-Pi_r2","Root_21dd-Pi_r3","Root_24h+Pi_r1","Root_24h+Pi_r2","Root_24h+Pi_r3","Root_24h-Pi_r1","Root_24h-Pi_r2","Root_24h-Pi_r3","Root_3d+Pi_r1","Root_3d+Pi_r2","Root_3d+Pi_r3","Root_3d-Pi_r1","Root_3d-Pi_r2","Root_3d-Pi_r3","Root_6h+Pi_r1","Root_6h+Pi_r2","Root_6h+Pi_r3","Root_6h-Pi_r1","Root_6h-Pi_r2","Root_6h-Pi_r3","Root_7d+Pi_r1","Root_7d+Pi_r2","Root_7d+Pi_r3","Root_7d-Pi_r1","Root_7d-Pi_r2","Root_7d-Pi_r3","Root_Cd_0h_r1","Root_Cd_0h_r2","Root_Cd_0h_r3","Root_Cd_1h_r1","Root_Cd_1h_r2","Root_Cd_1h_r3","Root_Cd_24h_r1","Root_Cd_24h_r2","Root_Cd_24h_r3","Seed_5DAP","Seed_aleurone_ABA-20uM&GA-2uM_4h","Seed_aleurone_ABA-20uM_4h","Seed_aleurone_GA-1uM_4h","Seed_aleurone_Mock_4h","Shoot_14DAG","Shoot_1h+Pi_r1","Shoot_1h+Pi_r2","Shoot_1h+Pi_r3","Shoot_1h-Pi_r1","Shoot_1h-Pi_r2","Shoot_1h-Pi_r3","Shoot_21d+1h+Pi_r1","Shoot_21d+1h+Pi_r2","Shoot_21d+1h+Pi_r3","Shoot_21d+1h-Pi_r1","Shoot_21d+1h-Pi_r2","Shoot_21d+1h-Pi_r3","Shoot_21d+1hRe_r1","Shoot_21d+1hRe_r2","Shoot_21d+1hRe_r3","Shoot_21d+24h+Pi_r1","Shoot_21d+24h+Pi_r2","Shoot_21d+24h+Pi_r3","Shoot_21d+24h-Pi_r1","Shoot_21d+24h-Pi_r2","Shoot_21d+24h-Pi_r3","Shoot_21d+24hRe_r1","Shoot_21d+24hRe_r2","Shoot_21d+24hRe_r3","Shoot_21d+6h+Pi_r1","Shoot_21d+6h+Pi_r2","Shoot_21d+6h+Pi_r3","Shoot_21d+6h-Pi_r1","Shoot_21d+6h-Pi_r2","Shoot_21d+6h-Pi_r3","Shoot_21d+6hRe_r1","Shoot_21d+6hRe_r2","Shoot_21d+6hRe_r3","Shoot_21dd+Pi_r1","Shoot_21dd+Pi_r2","Shoot_21dd+Pi_r3","Shoot_21dd-Pi_r1","Shoot_21dd-Pi_r2","Shoot_21dd-Pi_r3","Shoot_24h+Pi_r1","Shoot_24h+Pi_r2","Shoot_24h+Pi_r3","Shoot_24h-Pi_r1","Shoot_24h-Pi_r2","Shoot_24h-Pi_r3","Shoot_3d+Pi_r1","Shoot_3d+Pi_r2","Shoot_3d+Pi_r3","Shoot_3d-Pi_r1","Shoot_3d-Pi_r2","Shoot_3d-Pi_r3","Shoot_6h+Pi_r1","Shoot_6h+Pi_r2","Shoot_6h+Pi_r3","Shoot_6h-Pi_r1","Shoot_6h-Pi_r2","Shoot_6h-Pi_r3","Shoot_7d+Pi_r1","Shoot_7d+Pi_r2","Shoot_7d+Pi_r3","Shoot_7d-Pi_r1","Shoot_7d-Pi_r2","Shoot_7d-Pi_r3","Shoot_Cd_0h_r1","Shoot_Cd_0h_r2","Shoot_Cd_0h_r3","Shoot_Cd_1h_r1","Shoot_Cd_1h_r2","Shoot_Cd_1h_r3","Shoot_Cd_24h_r1","Shoot_Cd_24h_r2","Shoot_Cd_24h_r3","Shoot_MET1-2_mm","Shoot_MET1-2_Mm","Shoot_MET1-2_WT"],"data":[12.7941,7.17028,12.5485,2.21929,12.4874,10.8044,5.06485,6.83862,0,5.94131,10.2643,4.80931,4.81035,25.7859,24.8642,9.20285,12.2734,29.2978,19.2392,9.23885,7.25374,25.4066,27.7306,18.5551,6.48709,7.03616,6.85024,8.61694,6.19672,5.95459,9.59916,4.03461,11.9404,14.2657,9.82833,10.0876,9.71262,2.35446,11.0642,13.5118,36.6025,0,36.6025,0,36.6025,0,10.5519,9.55197,10.5519,9.55197,10.5519,9.55197,6.32215,6.38365,13.9826,13.4411,11.2866,10.434,12.1342,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,14.9399,0,10.3672,0,9.15556,0,9.52122,0,0,0,10.3012,10.2755,0,0,0,13.5857,0,0,0,15.502,10.498,0,0,0,14.9135,13.815,0,12.9418,0,0,0,0,0,0,11.3725,10.2599,11.2418,12.2921,0,7.44264,0,0,18.1604,33.111,30.2025,29.6998,104.68,104.497,107.748,54.3753,59.1802,61.7063,10.7156,10.2789,7.72771,26.194,6.03769,7.31088,3.4172,3.95174,3.63248,4.42308,4.39111,0,4.28507,3.91834,0,0,0,0,0,8.61318,0,5.25208,0,4.79646,9.52399,0,6.46481,0,0,9.42279,3.6867,2.55502,2.24248,9.61714,0,6.39206,0,0,5.24481,5.31295,4.01125,3.12177,0,0,0,0,3.34755,0,5.84108,3.97025,0,4.65596,5.19638,2.84587,5.49892,6.3566,0,3.50006,0,2.05692,4.35195,3.0893,2.98897,2.70511,4.11756,2.63642,6.17068,5.61299,6.18706,26.2378,22.2289,27.7845,18.7305,16.0012,17.7878,32.9724,28.999,37.8614,23.9966,0,25.5708],"name":"Os09g0106700"},{"category":["Anther_0.4mm","Leafblades_blast-inoculation_24h","Leaf_35S:OSH1_-GR+DEX_24h_r1","Leaf_35S:OSH1_-GR+DEX_24h_r2","Leaf_35S:OSH1_-GR+DEX_3h_r1","Leaf_35S:OSH1_-GR+DEX_3h_r2","Leaf_35S:OSH1_-GR+DEX_6h_r1","Leaf_35S:OSH1_-GR+DEX_6h_r2","Leaf_35S:OSH1_-GR+DEX_r1","Leaf_35S:OSH1_-GR+DEX_r2","Leaf_93-11xNPB","Leaf_Nipponbare","Leaf_NPBx93-11","Leaf_Osbhlh148-DR-1","Leaf_Osbhlh148-DR-2","Leaf_Osbhlh148-WW-1","Leaf_Osbhlh148-WW-2","Leaf_Oshsfa2e-DR_r1","Leaf_Oshsfa2e-DR_r2","Leaf_Oshsfa2e-WW_r1","Leaf_Oshsfa2e-WW_r2","Leaf_r1","Leaf_r2","Leaf_r3","Leaf_T2-PiZt-11-R","Leaf_T2-PiZt-11-S","Leaf_T4-PiZt-11-R","Leaf_T4-PiZt-11-S","Leaf_T6-Pi9-R","Leaf_T6-PiZt-11-R","Leaf_T6-Spin1i-1-R","Leaf_TP309","Leaf_WT-DEX_24h_r1","Leaf_WT-DEX_24h_r2","Leaf_WT-DEX_3h_r1","Leaf_WT-DEX_3h_r2","Leaf_WT-DEX_6h_r1","Leaf_WT-DEX_6h_r2","Leaf_WT-DEX_r1","Leaf_WT-DEX_r2","Leaf_WT-DR_SRP052306_r1","Leaf_WT-DR_SRP052306_r2","Leaf_WT-DR_SRP052309_r1","Leaf_WT-DR_SRP052309_r2","Leaf_WT-DR_SRP052310_r1","Leaf_WT-DR_SRP052310_r2","Leaf_WT-WW_SRP052306_r1","Leaf_WT-WW_SRP052306_r2","Leaf_WT-WW_SRP052309_r1","Leaf_WT-WW_SRP052309_r2","Leaf_WT-WW_SRP052310_r1","Leaf_WT-WW_SRP052310_r2","Leaf_WT2007","Leaf_WT2011","Panicle_Young_0.5cm","Pistil","Root_1h+Pi_r1","Root_1h+Pi_r2","Root_1h+Pi_r3","Root_1h-Pi_r1","Root_1h-Pi_r2","Root_1h-Pi_r3","Root_21d+1h+Pi_r1","Root_21d+1h+Pi_r2","Root_21d+1h+Pi_r3","Root_21d+1h-Pi_r1","Root_21d+1h-Pi_r2","Root_21d+1h-Pi_r3","Root_21d+1hRe_r1","Root_21d+1hRe_r2","Root_21d+1hRe_r3","Root_21d+24h+Pi_r1","Root_21d+24h+Pi_r2","Root_21d+24h+Pi_r3","Root_21d+24h-Pi_r1","Root_21d+24h-Pi_r2","Root_21d+24h-Pi_r3","Root_21d+24hRe_r1","Root_21d+24hRe_r2","Root_21d+24hRe_r3","Root_21d+6h+Pi_r1","Root_21d+6h+Pi_r2","Root_21d+6h+Pi_r3","Root_21d+6h-Pi_r1","Root_21d+6h-Pi_r2","Root_21d+6h-Pi_r3","Root_21d+6hRe_r1","Root_21d+6hRe_r2","Root_21d+6hRe_r3","Root_21dd+Pi_r1","Root_21dd+Pi_r2","Root_21dd+Pi_r3","Root_21dd-Pi_r1","Root_21dd-Pi_r2","Root_21dd-Pi_r3","Root_24h+Pi_r1","Root_24h+Pi_r2","Root_24h+Pi_r3","Root_24h-Pi_r1","Root_24h-Pi_r2","Root_24h-Pi_r3","Root_3d+Pi_r1","Root_3d+Pi_r2","Root_3d+Pi_r3","Root_3d-Pi_r1","Root_3d-Pi_r2","Root_3d-Pi_r3","Root_6h+Pi_r1","Root_6h+Pi_r2","Root_6h+Pi_r3","Root_6h-Pi_r1","Root_6h-Pi_r2","Root_6h-Pi_r3","Root_7d+Pi_r1","Root_7d+Pi_r2","Root_7d+Pi_r3","Root_7d-Pi_r1","Root_7d-Pi_r2","Root_7d-Pi_r3","Root_Cd_0h_r1","Root_Cd_0h_r2","Root_Cd_0h_r3","Root_Cd_1h_r1","Root_Cd_1h_r2","Root_Cd_1h_r3","Root_Cd_24h_r1","Root_Cd_24h_r2","Root_Cd_24h_r3","Seed_5DAP","Seed_aleurone_ABA-20uM&GA-2uM_4h","Seed_aleurone_ABA-20uM_4h","Seed_aleurone_GA-1uM_4h","Seed_aleurone_Mock_4h","Shoot_14DAG","Shoot_1h+Pi_r1","Shoot_1h+Pi_r2","Shoot_1h+Pi_r3","Shoot_1h-Pi_r1","Shoot_1h-Pi_r2","Shoot_1h-Pi_r3","Shoot_21d+1h+Pi_r1","Shoot_21d+1h+Pi_r2","Shoot_21d+1h+Pi_r3","Shoot_21d+1h-Pi_r1","Shoot_21d+1h-Pi_r2","Shoot_21d+1h-Pi_r3","Shoot_21d+1hRe_r1","Shoot_21d+1hRe_r2","Shoot_21d+1hRe_r3","Shoot_21d+24h+Pi_r1","Shoot_21d+24h+Pi_r2","Shoot_21d+24h+Pi_r3","Shoot_21d+24h-Pi_r1","Shoot_21d+24h-Pi_r2","Shoot_21d+24h-Pi_r3","Shoot_21d+24hRe_r1","Shoot_21d+24hRe_r2","Shoot_21d+24hRe_r3","Shoot_21d+6h+Pi_r1","Shoot_21d+6h+Pi_r2","Shoot_21d+6h+Pi_r3","Shoot_21d+6h-Pi_r1","Shoot_21d+6h-Pi_r2","Shoot_21d+6h-Pi_r3","Shoot_21d+6hRe_r1","Shoot_21d+6hRe_r2","Shoot_21d+6hRe_r3","Shoot_21dd+Pi_r1","Shoot_21dd+Pi_r2","Shoot_21dd+Pi_r3","Shoot_21dd-Pi_r1","Shoot_21dd-Pi_r2","Shoot_21dd-Pi_r3","Shoot_24h+Pi_r1","Shoot_24h+Pi_r2","Shoot_24h+Pi_r3","Shoot_24h-Pi_r1","Shoot_24h-Pi_r2","Shoot_24h-Pi_r3","Shoot_3d+Pi_r1","Shoot_3d+Pi_r2","Shoot_3d+Pi_r3","Shoot_3d-Pi_r1","Shoot_3d-Pi_r2","Shoot_3d-Pi_r3","Shoot_6h+Pi_r1","Shoot_6h+Pi_r2","Shoot_6h+Pi_r3","Shoot_6h-Pi_r1","Shoot_6h-Pi_r2","Shoot_6h-Pi_r3","Shoot_7d+Pi_r1","Shoot_7d+Pi_r2","Shoot_7d+Pi_r3","Shoot_7d-Pi_r1","Shoot_7d-Pi_r2","Shoot_7d-Pi_r3","Shoot_Cd_0h_r1","Shoot_Cd_0h_r2","Shoot_Cd_0h_r3","Shoot_Cd_1h_r1","Shoot_Cd_1h_r2","Shoot_Cd_1h_r3","Shoot_Cd_24h_r1","Shoot_Cd_24h_r2","Shoot_Cd_24h_r3","Shoot_MET1-2_mm","Shoot_MET1-2_Mm","Shoot_MET1-2_WT"],"data":[0,0,0,0,0,0,0,0,0.0249777,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.0400887,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.0149632,0.0393438,0,0,0,0.0270639,0,0,0,0,0,0,0,0,0.0637366,0,0,0,0,0,0,0.0363466,0,0,0,0,0,0,0,0,0,0.0358109,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.0381908,0,0,0,0,0,0,0,0,0,0.0535359,3850.74,2862.74,7244.1,5881.57,0,0,0,0,0,0.0265385,0,0,0,0,0,0,0,0,0.0297443,0.0230354,0,0.0226843,0,0,0,0,0.0267187,0,0,0,0,0,0.0705728,0,0,0,0.0246478,0,0,0,0,0,0,0.0260313,0,0,0,0,0,0,0,0,0,0.0255134,0,0,0,0.0295844,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"name":"Os01g0907600"},{"category":["Anther_0.4mm","Leafblades_blast-inoculation_24h","Leaf_35S:OSH1_-GR+DEX_24h_r1","Leaf_35S:OSH1_-GR+DEX_24h_r2","Leaf_35S:OSH1_-GR+DEX_3h_r1","Leaf_35S:OSH1_-GR+DEX_3h_r2","Leaf_35S:OSH1_-GR+DEX_6h_r1","Leaf_35S:OSH1_-GR+DEX_6h_r2","Leaf_35S:OSH1_-GR+DEX_r1","Leaf_35S:OSH1_-GR+DEX_r2","Leaf_93-11xNPB","Leaf_Nipponbare","Leaf_NPBx93-11","Leaf_Osbhlh148-DR-1","Leaf_Osbhlh148-DR-2","Leaf_Osbhlh148-WW-1","Leaf_Osbhlh148-WW-2","Leaf_Oshsfa2e-DR_r1","Leaf_Oshsfa2e-DR_r2","Leaf_Oshsfa2e-WW_r1","Leaf_Oshsfa2e-WW_r2","Leaf_r1","Leaf_r2","Leaf_r3","Leaf_T2-PiZt-11-R","Leaf_T2-PiZt-11-S","Leaf_T4-PiZt-11-R","Leaf_T4-PiZt-11-S","Leaf_T6-Pi9-R","Leaf_T6-PiZt-11-R","Leaf_T6-Spin1i-1-R","Leaf_TP309","Leaf_WT-DEX_24h_r1","Leaf_WT-DEX_24h_r2","Leaf_WT-DEX_3h_r1","Leaf_WT-DEX_3h_r2","Leaf_WT-DEX_6h_r1","Leaf_WT-DEX_6h_r2","Leaf_WT-DEX_r1","Leaf_WT-DEX_r2","Leaf_WT-DR_SRP052306_r1","Leaf_WT-DR_SRP052306_r2","Leaf_WT-DR_SRP052309_r1","Leaf_WT-DR_SRP052309_r2","Leaf_WT-DR_SRP052310_r1","Leaf_WT-DR_SRP052310_r2","Leaf_WT-WW_SRP052306_r1","Leaf_WT-WW_SRP052306_r2","Leaf_WT-WW_SRP052309_r1","Leaf_WT-WW_SRP052309_r2","Leaf_WT-WW_SRP052310_r1","Leaf_WT-WW_SRP052310_r2","Leaf_WT2007","Leaf_WT2011","Panicle_Young_0.5cm","Pistil","Root_1h+Pi_r1","Root_1h+Pi_r2","Root_1h+Pi_r3","Root_1h-Pi_r1","Root_1h-Pi_r2","Root_1h-Pi_r3","Root_21d+1h+Pi_r1","Root_21d+1h+Pi_r2","Root_21d+1h+Pi_r3","Root_21d+1h-Pi_r1","Root_21d+1h-Pi_r2","Root_21d+1h-Pi_r3","Root_21d+1hRe_r1","Root_21d+1hRe_r2","Root_21d+1hRe_r3","Root_21d+24h+Pi_r1","Root_21d+24h+Pi_r2","Root_21d+24h+Pi_r3","Root_21d+24h-Pi_r1","Root_21d+24h-Pi_r2","Root_21d+24h-Pi_r3","Root_21d+24hRe_r1","Root_21d+24hRe_r2","Root_21d+24hRe_r3","Root_21d+6h+Pi_r1","Root_21d+6h+Pi_r2","Root_21d+6h+Pi_r3","Root_21d+6h-Pi_r1","Root_21d+6h-Pi_r2","Root_21d+6h-Pi_r3","Root_21d+6hRe_r1","Root_21d+6hRe_r2","Root_21d+6hRe_r3","Root_21dd+Pi_r1","Root_21dd+Pi_r2","Root_21dd+Pi_r3","Root_21dd-Pi_r1","Root_21dd-Pi_r2","Root_21dd-Pi_r3","Root_24h+Pi_r1","Root_24h+Pi_r2","Root_24h+Pi_r3","Root_24h-Pi_r1","Root_24h-Pi_r2","Root_24h-Pi_r3","Root_3d+Pi_r1","Root_3d+Pi_r2","Root_3d+Pi_r3","Root_3d-Pi_r1","Root_3d-Pi_r2","Root_3d-Pi_r3","Root_6h+Pi_r1","Root_6h+Pi_r2","Root_6h+Pi_r3","Root_6h-Pi_r1","Root_6h-Pi_r2","Root_6h-Pi_r3","Root_7d+Pi_r1","Root_7d+Pi_r2","Root_7d+Pi_r3","Root_7d-Pi_r1","Root_7d-Pi_r2","Root_7d-Pi_r3","Root_Cd_0h_r1","Root_Cd_0h_r2","Root_Cd_0h_r3","Root_Cd_1h_r1","Root_Cd_1h_r2","Root_Cd_1h_r3","Root_Cd_24h_r1","Root_Cd_24h_r2","Root_Cd_24h_r3","Seed_5DAP","Seed_aleurone_ABA-20uM&GA-2uM_4h","Seed_aleurone_ABA-20uM_4h","Seed_aleurone_GA-1uM_4h","Seed_aleurone_Mock_4h","Shoot_14DAG","Shoot_1h+Pi_r1","Shoot_1h+Pi_r2","Shoot_1h+Pi_r3","Shoot_1h-Pi_r1","Shoot_1h-Pi_r2","Shoot_1h-Pi_r3","Shoot_21d+1h+Pi_r1","Shoot_21d+1h+Pi_r2","Shoot_21d+1h+Pi_r3","Shoot_21d+1h-Pi_r1","Shoot_21d+1h-Pi_r2","Shoot_21d+1h-Pi_r3","Shoot_21d+1hRe_r1","Shoot_21d+1hRe_r2","Shoot_21d+1hRe_r3","Shoot_21d+24h+Pi_r1","Shoot_21d+24h+Pi_r2","Shoot_21d+24h+Pi_r3","Shoot_21d+24h-Pi_r1","Shoot_21d+24h-Pi_r2","Shoot_21d+24h-Pi_r3","Shoot_21d+24hRe_r1","Shoot_21d+24hRe_r2","Shoot_21d+24hRe_r3","Shoot_21d+6h+Pi_r1","Shoot_21d+6h+Pi_r2","Shoot_21d+6h+Pi_r3","Shoot_21d+6h-Pi_r1","Shoot_21d+6h-Pi_r2","Shoot_21d+6h-Pi_r3","Shoot_21d+6hRe_r1","Shoot_21d+6hRe_r2","Shoot_21d+6hRe_r3","Shoot_21dd+Pi_r1","Shoot_21dd+Pi_r2","Shoot_21dd+Pi_r3","Shoot_21dd-Pi_r1","Shoot_21dd-Pi_r2","Shoot_21dd-Pi_r3","Shoot_24h+Pi_r1","Shoot_24h+Pi_r2","Shoot_24h+Pi_r3","Shoot_24h-Pi_r1","Shoot_24h-Pi_r2","Shoot_24h-Pi_r3","Shoot_3d+Pi_r1","Shoot_3d+Pi_r2","Shoot_3d+Pi_r3","Shoot_3d-Pi_r1","Shoot_3d-Pi_r2","Shoot_3d-Pi_r3","Shoot_6h+Pi_r1","Shoot_6h+Pi_r2","Shoot_6h+Pi_r3","Shoot_6h-Pi_r1","Shoot_6h-Pi_r2","Shoot_6h-Pi_r3","Shoot_7d+Pi_r1","Shoot_7d+Pi_r2","Shoot_7d+Pi_r3","Shoot_7d-Pi_r1","Shoot_7d-Pi_r2","Shoot_7d-Pi_r3","Shoot_Cd_0h_r1","Shoot_Cd_0h_r2","Shoot_Cd_0h_r3","Shoot_Cd_1h_r1","Shoot_Cd_1h_r2","Shoot_Cd_1h_r3","Shoot_Cd_24h_r1","Shoot_Cd_24h_r2","Shoot_Cd_24h_r3","Shoot_MET1-2_mm","Shoot_MET1-2_Mm","Shoot_MET1-2_WT"],"data":[750.036,0,1889.34,898.869,1476,1464.29,1589.63,1518.18,0,1738.49,0,2209.67,1081.53,989.365,904.63,243.972,382.467,819.234,1537.62,420.124,429.764,0,159.652,206.549,800.385,781.212,587.068,568.321,578.471,673.589,657.923,0,1470.03,1719.55,1359.01,1420.87,1164.01,1342.24,0,1386.36,637.567,637.539,637.567,637.539,637.567,637.539,284.867,262.685,284.867,262.685,284.867,262.685,0,707.832,2098.73,208.279,782.847,826.265,0,0,0,827.877,982.414,0,1264.5,0,0,0,713.491,0,664.398,0,0,0,0,0,696.17,702.874,527.022,0,1360.11,1217.26,0,852.45,760.699,0,0,782.669,707.798,1114.91,1145.33,0,848.213,0,759.526,0,713.44,0,0,882.681,0,755.135,887.909,874.19,900.062,0,0,1193.43,0,0,862.84,0,0,690.027,962.932,0,585.252,721.019,640.292,5201.91,3022.31,3174.99,3080.44,2100.41,3777.45,3202.81,0,3050.64,541.2,685.744,492.675,874.401,522.794,57.5564,308.017,293.666,305.948,274.199,268.215,384.107,382.822,347.997,394.931,436.56,456.731,0,0,0,375.79,0,322.388,0,433.907,525.737,0,0,550.716,0,393.093,345.217,345.778,0,0,502.781,0,443.634,0,0,0,341.477,444.852,447.594,452.649,346.782,0,360.565,334.237,303.014,239.372,0,310.84,305.203,0,0,292.442,362.687,315.467,247.164,297.265,248.899,0,0,0,0,348.748,393.426,0,1421.46,1272.18,1128.71,1201.44,1293.91,1352.07,2045.1,1673.76,1939.37,772.882,1442.62,0],"name":"Os11g0703900"}] ;
+	$("#charts").highcharts(); //可以调用
+	data = [data[0]];
+	alert($("#charts").highcharts());
+	$(document).ready(function () {
+		alert($("#charts").highcharts()); // 无法调用highcharts
+		var chart = null;
+		var maxLabelNum = 30;
+		var xLen = 0;
+		var step;
+		//$("#charts").html("<img src='/static/img/loading.gif'/>");
+		var parameter = $("#line").data("url");
+		$.ajax({
+			url: 'http://192.168.0.100:5000/report/static/js/highcharts-custom.js',
+			type: "get",
+			dataType: "script",
+			success: function () {
+				test();
+				var category = data[0].category;
+				xLen = category.length;
+				step = Math.round(xLen / maxLabelNum) < 1 ? 1 : Math.round(xLen / maxLabelNum);
+				$("#charts").highcharts({
+					plotOptions: {
+						line: {
+							turboThreshold: 0 //不限制数据点个数
+						}
+					},
+					chart: {
+						plotBorderWidth: 1,
+						zoomType: 'x',
+						height:550,
+						marginTop: 40,
+						marginBottom: 170,
+						events: {
+							//监听图表区域选择事件
+							selection: function (event) {//动态修改
+								var len = event.xAxis[0].max - event.xAxis[0].min;
+								var interval = Math.round(len / maxLabelNum < 1 ? 1 : Math.round(len / maxLabelNum));
+								DynamicChangeTickInterval(interval);
+							}
+						}
+					},
+					credits: {
+						enabled: false
+					},
+					title: {
+						text: null
+					},
+					xAxis: {
+						type: 'category',
+						categories: category,
+						labels: {
+							rotation: -45,
+							style: {
+								fontSize: '12px',
+								fontFamily: 'Arial, sans-serif'
+							}
+						},
+						tickInterval: step
+					},
+					yAxis: {
+						labels: {
+							style: {
+								fontSize: '12px',
+								fontFamily: 'Arial, sans-serif'
+							}
+						},
+						min: 0,
+						title: {
+							text: 'Expression level (FPKM)'
+						},
+						plotLines: [{
+								value: 0,
+								width: 1,
+								color: '#808080'
+							}]
+					},
+					legend: {
+						layout: 'vertical',
+						align: 'left',
+						verticalAlign: 'middle',
+						borderWidth: 0
+					},
+					series: data
+				}, function (chartObj) {
+					//获得图表对象
+					chart = chartObj;
+				});
+			}
+		});
+
+		$("#line").click(function () {
+			//$("#charts").html("<img src='/static/img/loading.gif'/>");
+			//parameter = $("#line").data("url");
+			$.ajax({
+				//dataType: "json",
+				success: function () {
+					var category = data[0].category;
+					xLen = category.length;
+					step = Math.round(xLen / maxLabelNum) < 1 ? 1 : Math.round(xLen / maxLabelNum);
+					$("#charts").highcharts({
+						plotOptions: {
+							line: {
+								turboThreshold: 0 //不限制数据点个数
+							}
+						},
+						chart: {
+							plotBorderWidth: 1,
+							zoomType: 'x',
+							height:550,
+							marginTop: 40,
+							marginBottom: 170,
+							events: {
+								//监听图表区域选择事件
+								selection: function (event) {//动态修改
+									var len = event.xAxis[0].max - event.xAxis[0].min;
+									var interval = Math.round(len / maxLabelNum < 1 ? 1 : Math.round(len / maxLabelNum));
+									DynamicChangeTickInterval(interval);
+								}
+							}
+						},
+						credits: {
+							enabled: false
+						},
+						title: {
+							text: null
+						},
+						xAxis: {
+							type: 'category',
+							categories: category,
+							labels: {
+								rotation: -45,
+								style: {
+									fontSize: '12px',
+									fontFamily: 'Arial, sans-serif'
+								}
+							},
+							tickInterval: step
+						},
+						yAxis: {
+							labels: {
+								style: {
+									fontSize: '12px',
+									fontFamily: 'Arial, sans-serif'
+								}
+							},
+							min: 0,
+							title: {
+								text: 'Expression level (FPKM)'
+							},
+							plotLines: [{
+									value: 0,
+									width: 1,
+									color: '#808080'
+								}]
+						},
+						legend: {
+							layout: 'vertical',
+							align: 'left',
+							verticalAlign: 'middle',
+							borderWidth: 0
+						},
+						series: data
+					}, function (chartObj) {
+						//获得图表对象
+						chart = chartObj;
+					});
+				}
+			});
+		});
+		$("#heatmap").click(function () {
+			//$("#charts").html("<img src='/static/img/loading.gif'/>");
+			//parameter = $("#heatmap").data("url");
+			$.ajax({
+				//dataType: "json",
+				success: function () {
+					xLen = data[0].treatment.length;
+					step = Math.round(xLen / maxLabelNum) < 1 ? 1 : Math.round(xLen / maxLabelNum);
+					$("#charts").highcharts({
+						plotOptions: {
+							heatmap: {
+								turboThreshold: 0 //不限制数据点个数
+							}
+						},
+						credits: {
+							enabled: false
+						},
+						chart: {
+							zoomType: 'xy',
+							type: 'heatmap',
+							height:550,
+							marginTop: 65,
+							marginBottom: 170,
+							events: {
+								//监听图表区域选择事件
+								selection: function (event) {//动态修改
+									var len = event.xAxis[0].max - event.xAxis[0].min;
+									var interval = Math.round(len / maxLabelNum < 1 ? 1 : Math.round(len / maxLabelNum));
+									DynamicChangeTickInterval(interval);
+								}
+							}
+						},
+						title: {
+							text: null
+						},
+						xAxis: {
+							categories: data[0].treatment,
+							labels: {
+								rotation: -45,
+								style: {
+									fontSize: '12px',
+									fontFamily: 'Arial, sans-serif'
+								}
+							},
+							tickInterval: step
+						},
+						yAxis: {
+							labels: {
+								style: {
+									fontSize: '12px',
+									fontFamily: 'Arial, sans-serif'
+								}
+							},
+							categories: data[0].gt,
+							title: "Gene"
+						},
+						colorAxis: {
+							stops: [
+								[0.1, '#78b8ed'],
+								[0.5, '#fffbbc'],
+								[0.8, '#c4463a'],
+								[1, '#c4463a']
+							],
+							min: -3
+	//                        minColor: '#FFFFFF'
+	//                        maxColor: Highcharts.getOptions().colors[0]
+						},
+						legend: {
+							title: {
+								style: {
+									fontWeight:'1',
+									color:'#555',
+									fontSize:'12px'
+								},
+								text: 'FPKM (log10)'
+							},
+							align: 'right',
+							layout: 'vertical',
+							marginTop: 0,
+							verticalAlign: 'top',
+							y: 25,
+							symbolHeight: 305
+						},
+						tooltip: {
+							formatter: function () {
+								return '<b>Experiment:</b>' + this.series.xAxis.categories[this.point.x] + '<br>' + this.series.yAxis.categories[this.point.y] + '<br><b>FPKM (log10): ' + this.point.value + '</b>';
+							}
+						},
+						series: [{
+								borderWidth: '0.2',
+								color: '#fefefe',
+								data: data[0].expression,
+								dataLabels: {
+									enabled: false
+								}
+							}]
+					}, function (chartObj) {
+						//获得图表对象
+						chart = chartObj;
+					});
+
+				}
+			});
+		});
+
+		$(".boxPlot").click(function () {
+			//$("#charts").html("<img src='/static/img/loading.gif'/>");
+			var keyword = $(this).attr("id");
+			var url;
+			if(keyword.indexOf("t")>0){
+				url = "/boxPlot?transcript=" + keyword + "";
+			}
+			if(keyword.indexOf("g")>0){
+				url =  "/boxPlot?gene=" + keyword + "";
+			}
+			$.ajax({
+				url: url,
+				type: "get",
+				dataType: "json",
+				success: function () {
+					$("#charts").highcharts({
+						credits: {
+							enabled: false
+						}
+						,
+						chart: {
+							type: 'boxplot',
+							height:550,
+							marginTop: 40,
+							marginBottom: 80
+						},
+						title: {
+							text: keyword
+						},
+						legend: {
+							enabled: false
+						},
+						xAxis: {
+							labels: {
+								style: {
+									fontSize: '12px',
+									fontFamily: 'Arial, sans-serif'
+								}
+							},
+							categories: data.tissue,
+							title: {
+								text: 'Tissue '
+							}
+						},
+						yAxis: {
+							title: {
+								text: 'Expression level (FPKM)'
+							},
+							min:0
+						},
+						plotOptions: {
+							boxplot: {
+								fillColor: '#F0F0E0',
+								lineWidth: 2,
+								medianColor: '#0C5DA5',
+								medianWidth: 3,
+								stemColor: '#A63400',
+								stemDashStyle: 'dot',
+								stemWidth: 1,
+								whiskerColor: '#3D9200',
+								whiskerLength: '20%',
+								whiskerWidth: 3
+							}
+						},
+						series: [{
+								name: keyword,
+								data: data.ev
+							},
+							{
+								name: 'Outlier',
+								color: Highcharts.getOptions().colors[0],
+								type: 'scatter',
+								data: data.outlier,
+								marker: {
+									fillColor: 'white',
+									lineWidth: 1,
+									lineColor: Highcharts.getOptions().colors[0]
+								},
+								tooltip: {
+									pointFormat: 'FPKM: {point.y}'
+								}
+							}]
+					});
+				}
+			});
+		});
+		//扩展或者重写Highcharts图表组件的方法 
+		ExtendHighcharts();
+		function DynamicChangeTickInterval(step) {
+			chart.xAxis[0].update({
+				tickInterval: step
+			});
+			//扩展或者重写Highcharts图表组件的方法
+			ExtendHighcharts();
+		}
+
+		//扩展或者重写Highcharts图表组件的方法
+		function ExtendHighcharts() {
+			Highcharts.extend(Highcharts.Chart.prototype, {zoomOut: function () {
+					//还原图表X轴的间隔
+					DynamicChangeTickInterval(step);
+					//还原图表初始状态
+					this.zoom();
+				}
+			});
+		}
+	});
+</script>
+{% endblock %}

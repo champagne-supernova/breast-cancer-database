@@ -1,0 +1,40 @@
+{% extends 'bio_homolog/bio_homolog.base.html' %}
+{% load staticfiles %}
+{% block title %} Download Soybean Homolog Database {% endblock %}
+{% block css_js_after %}
+<link href="{% static "css/doc.css" %}" rel="stylesheet">
+<link href="{% static "css/homolog_download.css" %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="container" id="main">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title"><span class="glyphicon glyphicon-download"></span> Download</h3>
+		</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="alert alert-success" role="alert">
+						Please cite Soybean publication ( <a href="http://www.ncbi.nlm.nih.gov/pubmed/26519466">Information Commons for Rice (IC4R) (2016) Nucleic Acids Research</a> ) in your manuscript if you want to use our dataset. 
+					</div>
+					<ul>
+						<li>
+							<strong>All homolog groups with corresponding gene list:</strong> 
+							<a href="http://phd.big.ac.cn/groups.tsv.tar.xz">
+								groups.tsv.tar.xz
+							</a>
+						</li>
+						<li>
+							<strong>Pairwise bootstrap value, Ka/Ks, Ka and Ks value:</strong> 
+							<a href="http://phd.big.ac.cn/gpvalues.tsv.tar.xz">
+								gpvalues.tsv.tar.xz
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

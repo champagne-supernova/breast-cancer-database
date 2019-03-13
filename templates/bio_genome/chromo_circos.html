@@ -1,0 +1,89 @@
+{% extends 'bio_base/base.html' %}
+{% load staticfiles %}
+{% block title %} Circos {% endblock %}
+{% block css_js_before %}
+<link href="{% static "css/cgc.css" %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div id="container" class="container content">
+	<div class="row">
+		<div id = "chr" class="chr row show">
+			<!--blockquote-->
+			<h4>
+				<span class="glyphicon glyphicon-tasks" aria-hidden="true"></span> <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>chrOGRs / 
+				<span class="unread"> proOGRs / dnaOGRs / JBrowse</span>
+			</h4>
+			<!--/blockquote-->
+			<div id= "chr-map" class="chr-map col-md-12" title="Click to save numbers in box"></div>
+			<div class="chr-details col-md-12 hidden"></div>
+		</div><!--chrOGRs-->
+				
+		<div id = "pro" class="pro row hidden">
+			<!--blockquote-->
+			 <h4>
+				<span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
+				<a href="#chr">chrOGRs</a> / <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>proOGRs / 
+				<span class="unread"> dnaOGRs / JBrowse</span>
+			</h4>
+			<!--/blockquote-->
+			<div id="pro-map" class="pro-map col-md-6" title="Click to save numbers in box"></div>
+			<div class="pro-details col-md-5 hidden"></div>
+		</div><!--proOGRs-->
+		  
+		<div id = "dna" class="dna row hidden">
+			<!--blockquote-->
+			<h4>
+				<span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
+				<a href="#chr">chrOGRs</a>/ <a href="#pro">proOGRs</a> / <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>dnaOGRs /
+				<span class="unread"> JBrowse</span>
+			</h4>
+			<!--/blockquote-->
+			<div id="dna-map" class="dna-map col-md-6" title="Click to save numbers in box"></div>
+			<div class="dna-details col-md-5 hidden"></div>
+		</div><!--dnaOGRs-->
+				
+		<div id = "jbrowse" class="jbrowse row hidden">
+			<blockquote>
+				<h4>
+					<span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
+					<a href="#chr">chrOGRs</a>/ <a href="#pro">proOGRs</a> / <a href="#dna">dnaOGRs </a> /
+					<span class="glyphicon glyphicon-flag" aria-hidden="true"></span> JBrowse     
+				</h4>
+			</blockquote>
+			<div class="jbrowse-map col-md-12"></div>
+		</div><!--jbrowse-->
+	</div> 
+</div> 
+{% endblock %}
+
+{% block footer %}
+<!-- d3 Plungin -->
+<script type="text/javascript" src="{% static 'plugins/d3.min.js' %}"></script>
+
+<!-- chrOGRs javascript -->
+<script type="text/javascript" src="{% static 'js/chrOGRs.js' %}"></script>
+
+<script type="text/javascript" src="{% static 'js/ogr-map.js' %}"></script>
+		
+<script>
+	$(document).ready(function(){
+		$("#back-to-top").hide();
+	$(function () {
+		$(window).scroll(function(){
+			if ($(window).scrollTop()>500){
+				$("#back-to-top").fadeIn(500);
+			}
+			else{
+				$("#back-to-top").fadeOut(1500);
+			}
+	$("#back-to-top").click(function(){
+	$('body,html').animate({scrollTop:0},1000);
+	return false;
+	});
+	});
+	});
+	});
+</script>
+{% endblock %}
+

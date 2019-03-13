@@ -1,0 +1,254 @@
+{% extends "bio_expr/bio_expr.base.html" %}
+{% load staticfiles %}
+{% block title %} FAQ - Soybean Expression Database {% endblock %}
+{% block css_js_after %}
+<link href="{% static "css/doc.css" %}" rel="stylesheet">
+{% endblock %}
+
+{% block  content %}
+<div class="container">
+    <script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?3485b34ebae86f97fc6537472457f99f";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+    
+<div class="panel panel-default">
+    <div class="panel-heading" style="height: 40px; padding: 10px 15px 10px 15px">
+        <h3 class="panel-title"><span class="glyphicon glyphicon-question-sign"></span> FAQ</h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="bs-docs-sidebar" role="complementary">
+                    <ul class="nav bs-docs-sidenav">
+                        <li>
+                            <a href="#intro">1. Introduction</a>
+                            <ul class="nav">
+                                <li><a href="#red">What is Rice Expression Database (RED)?</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#method">2. Datasets and Method</a>
+                            <ul class="nav">
+                                <li><a href="#datasets">What datasets are used in RED and where I can find these
+                                    original data?</a></li>
+                                <li><a href="#processing">What procedures are used for RNA-Seq data analysis?</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#usage">3. Database Usage</a>
+                            <ul class="nav">
+                                <li><a href="#project">Where can I find related information of SRA projects that are
+                                    used in RED?</a></li>
+                                <li><a href="#browse">How can I browse expression levels for multiple genes?</a></li>
+                                <li><a href="#project_query">How can I search project information?</a></li>
+                                <li><a href="#gene_expression">How can I search expression levels for genes of
+                                    interest?</a></li>
+                                <li><a href="#transcript_expression">How can I search the transcripts expression?</a>
+                                </li>
+                                <li><a href="#location">How can I obtain expression profile for a specific region?</a>
+                                </li>
+                                <li><a href="#download">Can I download the data?</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#term">4. Terminology</a>
+                            <ul class="nav">
+                                <li><a href="#rna">RNA Sequencing</a></li>
+                                <li><a href="#sra">Sequence Read Archive</a></li>
+                                <li><a href="#fpkm">FPKM</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#help">5. Data and Database Help</a>
+                            <ul class="nav">
+                                <li><a href="#comments">Comments & Collaborations </a></li>
+                                <li><a href="#contact">Contact us</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <h4 id="intro">1. Introduction</h4>
+                <ul>
+                    <li><p id="red"><strong>What is Rice Expression Database?</strong></p>
+                        <p class="text-justify">Rice Expression Database (RED), a sub-project of IC4R (Information
+                            Commons for Rice; http://ic4r.org), integrates expression profiles derived entirely from NGS
+                            RNA-Seq data of <em>Nipponbare</em> (<em>Oryza Sativa</em> japonica). RED includes RNA-seq
+                            data exclusively, providing information on gene expression profiles of normal tissues as
+                            well as tissues under a wide range of treatments. It provides friendly web interfaces for
+                            querying and visualizing gene expression profiles under different tissues and treatments.
+                        </p></li>
+                </ul>
+                <h4 id="method">2. Datasets and Method</h4>
+                <ul>
+                    <li>
+                        <p id="datasets"><strong>What datasets are used in RED and where I can find these original
+                            data?</strong></p>
+                        <p class="text-justify">
+                            RED is based entirely on RNA-Seq data derived from NCBI SRA
+                            (http://www.ncbi.nlm.nih.gov/sra/) and includes high-quality RNA-Seq data by critical
+                            criteria (e.g., sequencing reads should be longer than or equal to 50bp). As a result, a
+                            total of 17 projects were used for profiling gene expression levels and detailed information
+                            can be found at http://expression.ic4r.org/project.
+                        </p>
+                    </li>
+                    <li>
+                        <p id="processing"><strong>What procedures are used for RNA-Seq data analysis?</strong></p>
+                        <p class="text-justify">Roughly speaking, raw RNA-Seq data was first converted into fastq using
+                            SRA Toolkit (v 2.4.2) and we adopted NGS QC Toolkit (v2.3.3) for quality control ( -pe/-se N
+                            A ât 2 âl 70 âs 20). A sample was excluded from further analysis if low-quality-reads cover
+                            over 30% of total reads.</p>
+                        <p class="text-justify">
+                            For sequence alignment and gene expression analysis, all high-quality samples were mapped to
+                            the latest version of rice reference genome (Os-Nipponbare-Reference-IRGSP-1.0) using Tophat
+                            (v 2.0.13). Only samples with ~70% reads mapped to the genome were used for gene expression
+                            profiling. Cufflinks (v 2.2.1) was used to calculate the expression level for each gene and
+                            transcript based on annotation information of genes and transcripts downloaded from RAP-DB (<a
+                                href="http://rapdb.dna.affrc.go.jp/" target="_blank">http://rapdb.dna.affrc.go.jp/</a>).
+                        </p>
+                    </li>
+                </ul>
+                <h4 id="usage">3. Database Usage</h4>
+                <ul>
+                    <li>
+                        <p id="project"><strong>Where can I find related information of SRA projects that are used in
+                            RED?</strong></p>
+                        <p class="text-justify">Please click <a href="project">Projects</a> on the top navigation bar
+                            and you will find brief information on the SRA projects used for profiling gene expression
+                            levels. Any project contains multiple different experiments and you can click the number
+                            shown at the last column for details. After entering into the experiment page, you will find
+                            basic information about the tissue source, treatment method, data quality and mapping
+                            quality, etc. For detailed information on each experiment, please click on the SRA accession
+                            number which will automatically direct you to SRA.</p>
+                    </li>
+                    <li>
+                        <p id="browse"><strong>How can I browse expression levels for multiple genes?</strong></p>
+                        <p class="text-justify">RED is equipped with <a href="browse">"Browse"</a> on the top navigation
+                            bar. Please choose genes of your interest and click "Line chart" or "Heatmap chart". There
+                            are four kinds of image formats (PNG, JPEG, PDF and SVG) available for download. For a
+                            specific gene, you can also click "Boxplot" listed at the last column to obtain its
+                            expression profiles under different tissues.</p>
+                    </li>
+                    <li>
+                        <p id="project_query"><strong>How can I search project information?</strong></p>
+                        <p class="text-justify">
+                            You can visit the <a href="search">Search</a> page and then click "<em>Project</em>" on the
+                            sidebar. After you enter a keyword or SRA project id, all related information will be
+                            retrieved and displayed.
+                        </p>
+                    <li>
+                        <p id="gene_expression"><strong>How can I search expression levels for genes of
+                            interest?</strong></p>
+                        <p class="text-justify">
+                            Please visit the <a href="search">Search</a> page and then click "Gene expression" on the
+                            sidebar. After entering a gene ID list (separated with comma or space blank), all genes'
+                            expression profiles will be retrieved and visualized. In addition, you can also click "<em>Advanced</em>"
+                            to set more conditions. For a better experience, it is highly recommended to enter less than
+                            50 genes for each query. After obtained the queried results, you can also narrow down the
+                            results by selecting the project name, tissue type, development stage and treatment methods.
+                            In addition, combined Line plot or Heatmap visualization of gene expression levels are
+                            available.
+                        </p>
+                    </li>
+                    <li>
+                        <p id="transcript_expression"><strong>How can I search the transcripts expression?</strong></p>
+                        <p class="text-justify">Plase visit <a href="search">"Search"</a> on the top navigation bar and
+                            then click "<em>Transcript expression</em>" on the sidebar. After eentering transcipt IDs of
+                            interest, all relevant information will be automatically retrieved and displayed. </p>
+                    </li>
+                    <li>
+                        <p id="location"><strong>How can I obtain expression profile for a specific region?</strong></p>
+                        <p class="text-justify">
+                            First, please click <a href="search">"Search"</a> on the top navigation bar and then click "<em>Location</em>"
+                            on the sidebar. Second, determine chromosome that you are interested in. Finally, specify
+                            the start site and end site of the region of interest and then you will find all relevant
+                            information associated with this region.
+                        </p>
+                    </li>
+                    <li>
+                        <p id="download"><strong>Can I download the data?</strong></p>
+                        <p class="text-justify">
+                            Yes. Please go to the Download page and you can find a link to download all genes'
+                            expression profiles.
+                        </p>
+                    </li>
+                </ul>
+                <h4 id="term">4. Terminology</h4>
+                <ul>
+                    <li>
+                        <p id="rna"><strong>RNA Sequencing</strong></p>
+                        <p>RNA-Seq (RNA Sequencing), also called Whole Transcriptome Shotgun Sequencing (WTSS), is a
+                            technology that uses the capabilities of next-generation sequencing to reveal a snapshot of
+                            RNA presence and quantity from a genome at a given moment in time.</p>
+                    </li>
+                    <li>
+                        <p id="sra"><strong>Sequence Read Archive</strong></p>
+                        <p class="text-justify">
+                            SRA (Sequence Read Archive) makes biological sequence data available to the research
+                            community to enhance reproducibility and allow for new discoveries by comparing data sets.
+                            SRA stores raw sequencing data and alignment information from high-throughput sequencing
+                            platforms. (Adapted from SRA Homepage) http://www.ncbi.nlm.nih.gov/sra
+                        </p>
+                    </li>
+                    <li>
+                        <p id="fpkm"><strong>FPKM</strong></p>
+                        <p>The number of fragments aligned per kilobases of the transcript per million mappable
+                            fragments from the total dataset.</p>
+                    </li>
+                </ul>
+                <h4 id="help">5. Help</h4>
+                <ul>
+                    <li>
+                        <p id="comments"><strong>Comments &amp; Collaborations</strong></p>
+                        <p class="text-justify">
+                            We look forward to worldwide comments, suggestions and guidance from colleagues and peers
+                            with common research interests. We also invite the scientific community to submit their
+                            analysis results of RNA-Seq data to RED and to build collaborations in improving the
+                            functionalities of RED.
+                        </p>
+                    </li>
+                    <li>
+                        <p id="contact"><strong>Contact us</strong></p>
+                        <p>We would love to hearing from you for any questions or comments. Please find our contact
+                            information below. </p>
+                        <address>
+                            <Strong>Email</Strong>
+                            <dl class="dl-horizontal">
+                                <dt>Dong Zou</dt>
+                                <dd>zoud(AT)big.ac.cn</dd>
+                                <dt>Lili Hao</dt>
+                                <dd>haolili(AT)big.ac.cn</dd>
+                                <dt>Lin Xia</dt>
+                                <dd>xialin(AT)big.ac.cn</dd>
+                                <dt>Zhang Zhang</dt>
+                                <dd>zhangzhang(AT)big.ac.cn</dd>
+                            </dl>
+                        </address>
+                        <address>
+                            <strong>Postal Address</strong><br>
+                            Dr. Zhang Zhang, PI<br>
+                            Beijing Institute of Genomics, Chinese Academy of Sciences<br>
+                            No.1 Beichen West Road<br>
+                            Chaoyang District, Beijing 100101<br>
+                            China
+                            <br>
+                        </address>
+                        <address>
+                            <strong>Map</strong><br>
+							 <img src="{% static "images/honor-image-1.png" %}" width="50%" />
+						</address>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "bio_expr/bio_expr.base.html" %}
+{% load staticfiles %}
+{% block title %} Contact Us {% endblock %}
+{% block css_js_after %}
+<link href="{% static "css/contact_expr.css" %}" rel="stylesheet">
+<script type="text/javascript"  src="{% static 'plugins/jquery-2.2.4.min.js' %}"></script>
+<script type="text/javascript"  src="{% static 'plugins/pic.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title"><span class="glyphicon glyphicon-send"></span> Contact Us</h3>
+    </div>
+    <div class="panel-body">
+        <address>
+            <Strong>Technical support</Strong>
+            <br>
+            Jiangwang Li: lijiawang@honortech.cn<br>
+        </address>
+        <address>
+            <Strong>General issue</Strong>
+            <br>
+            Huamei Li: lihuamei@honortech.cn<br>
+            Jing Wu: wujing@honortech.cn<br>
+        </address>
+        <address>
+            <strong>Postal Address</strong><br>
+            Dr. Zhang Zhang, PI<br>
+            Beijing Institute of Genomics, Chinese Academy of Sciences<br>
+            No.1 Beichen West Road<br>
+            Chaoyang District, Beijing 100101<br>
+            China
+        </address>
+        <address>
+            <strong>Map</strong><br>
+            <img src="{% static "images/honor-image-1.png" %}" width="50%" />
+        </address>
+    </div>
+</div>
+</div>
+{% endblock %}

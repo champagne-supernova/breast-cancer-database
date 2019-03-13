@@ -1,0 +1,250 @@
+{% extends 'bio_base/base.html' %}
+{% load staticfiles %}
+{% block title %} Home {% endblock %}
+{% block content %}
+<!-- banner start -->
+<!-- ================ -->
+<div class="banner">
+
+<!-- slideshow start -->
+<!-- ================ -->
+	<div class="slideshow">
+
+	<!-- slider revolution start -->
+	<!-- ================ -->
+		<div class="slider-banner-container">
+			<div class="slider-banner">
+				<ul>
+					<!-- slide 1 start -->
+					<li data-transition="random" data-slotamount="7" data-masterspeed="500" data-saveperformance="on" data-title="Premium HTML5 template">
+					<!-- main image -->
+					<img src="{% static 'images/slider-1-slide-1.jpg' %}"  alt="slidebg1" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+					</li>
+					<!-- slide 1 end -->
+
+					<!-- slide 2 start -->
+					<li data-transition="random" data-slotamount="7" data-masterspeed="500" data-saveperformance="on" data-title="Powerful Bootstrap Theme">
+					<!-- main image -->
+					<img src="{% static 'images/slider-1-slide-2.jpg' %}"  alt="slidebg1" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+					</li>
+					<!-- slide 2 end -->
+
+					<!-- slide 3 start -->
+					<li data-transition="random" data-slotamount="7" data-masterspeed="500" data-saveperformance="on" data-title="Powerful Bootstrap Theme">
+						<!-- main image -->
+						<img src="{% static 'images/slider-1-slide-3.jpg' %}"  alt="kenburns"  data-bgposition="left center" data-kenburns="on" data-duration="10000" data-ease="Linear.easeNone" data-bgfit="100" data-bgfitend="115" data-bgpositionend="right center">
+						<!-- LAYER NR. 1 -->
+					</li>
+					<!-- slide 3 end -->
+				</ul>
+				<div class="tp-bannertimer tp-bottom"></div>
+			</div>
+		</div>
+		<!-- slider revolution end -->
+
+	</div>
+	<!-- slideshow end -->
+
+</div>
+<!-- banner end -->
+
+<!-- page-top start-->
+<!-- ================ -->
+<div class="page-top">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<div class="call-to-action">
+					<h1 class="title">SEARCH TOOL</h1>
+
+
+						<form class="form-horizontal" role="form">
+							<div class="form-group">
+								<div class="col-sm-10 col-md-offset-1">
+									<input type="search" class="form-control" id="search" placeholder="Name or synonym or uniprot info or organism">
+									<p>e.g.: Os01g0192000; Os07g0143700; Os01g0883800</p>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-10 col-md-offset-1">
+									<button type="submit" class="btn btn-default">SEARCH</button>
+								</div>
+							</div>
+						</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- page-top end -->
+
+<!-- section start -->
+<!-- ================ -->
+<div class="section clearfix">
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+
+				<h2>Our Work</h2>
+				<div class="separator-2"></div>
+				<p>Currently, our database committed projects include:</p>
+				<div class="owl-carousel carousel">
+					<div class="image-box object-non-visible" data-animation-effect="fadeInLeft" data-effect-delay="4">
+						<div class="overlay-container">
+							<img src="{% static 'images/portfolio.png' %}" alt="">
+							<div class="overlay">
+								<div class="overlay-links">
+									<a href="{% url 'cancer_genomic_page' %}"><i class="fa fa-link"></i></a>
+									<a href="{% static 'images/portfolio.png' %}" class="popup-img"><i class="fa fa-search-plus"></i></a>
+								</div>
+							</div>
+						</div>
+						<div class="image-box-body">
+							<h3 class="title"><a href="{% url 'cancer_genomic_page' %}">CANCER DATABASE</a></h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci accusamus accusantium.</p>
+							<a href="{% url 'cancer_genomic_page' %}" class="link"><span>Read More</span></a>
+						</div>
+						
+					</div>
+					
+					<div class="image-box object-non-visible" data-animation-effect="fadeInLeft" data-effect-delay="300" >
+						<div class="overlay-container">
+							<img src="{% static 'images/portfolio-1.jpg' %}" alt="">
+							<div class="overlay">
+								<div class="overlay-links">
+									<a href="{% url 'expr_page' %}"><i class="fa fa-link"></i></a>
+									<a href="{% static 'images/portfolio-1.jpg' %}" class="popup-img"><i class="fa fa-search-plus"></i></a>
+								</div>
+							</div>
+						</div>
+						<div class="image-box-body">
+							<h3 class="title"><a href="{% url 'expr_page' %}">EXPRESSION DATABASE</a></h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci accusamus accusantium.</p>
+							<a href="{% url 'expr_page' %}" class="link"><span>Read More</span></a>
+						</div>
+					</div>
+					<div class="image-box object-non-visible" data-animation-effect="fadeInLeft" data-effect-delay="200">
+						<div class="overlay-container">
+							<img src="{% static 'images/portfolio-2.jpg' %}" alt="">
+								<div class="overlay">
+									<div class="overlay-links">
+										<a href="{% url 'homolog_page' %}"><i class="fa fa-link"></i></a>
+										<a href="{% static 'images/portfolio-2.jpg' %}" class="popup-img"><i class="fa fa-search-plus"></i></a>
+									</div>
+								</div>
+						</div>
+					<div class="image-box-body">
+						<h3 class="title"><a href="{% url 'homolog_page' %}">HOMOLOG DATABASE</a></h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci accusamus accusantium.</p>
+						<a href="{% url 'homolog_page' %}" class="link"><span>Read More</span></a>
+					</div>
+				</div>
+				<div class="image-box object-non-visible" data-animation-effect="fadeInLeft" data-effect-delay="100">
+					<div class="overlay-container">
+						<img src="{% static 'images/portfolio-3.jpg' %}" alt="">
+						<div class="overlay">
+							<div class="overlay-links">
+								<a href="{% url 'var_page' %}"><i class="fa fa-link"></i></a>
+								<a href="{% static 'images/portfolio-3.jpg' %}" class="popup-img"><i class="fa fa-search-plus"></i></a>
+							</div>
+						</div>
+					</div>
+					<div class="image-box-body">
+						<h3 class="title"><a href="{% url 'var_page' %}">VARIATION DATABASE</a></h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci accusamus accusantium.</p>
+						<a href="{% url 'var_page' %}" class="link"><span>Read More</span></a>
+					</div>
+				</div>
+				<div class="image-box object-non-visible" data-animation-effect="fadeInLeft" data-effect-delay="0">
+					<div class="overlay-container">
+						<img src="{% static 'images/portfolio-4.jpg' %}" alt="">
+						<div class="overlay">
+							<div class="overlay-links">
+								<a href="http://www.omicwiki.org"><i class="fa fa-link"></i></a>
+								<a href="{% static 'images/portfolio-4.jpg' %}" class="popup-img"><i class="fa fa-search-plus"></i></a>
+							</div>
+						</div>
+					</div>
+					<div class="image-box-body">
+						<h3 class="title"><a href="http://www.omicwiki.org">OMIC WIKI</a></h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci accusamus accusantium.</p>
+						<a href="{% url 'omic_page' %}" class="link"><span>Read More</span></a>
+					</div>
+				</div>
+					<div class="image-box">
+						<div class="overlay-container">
+							<img src="{% static 'images/portfolio-5.png' %}" alt="">
+								<div class="overlay">
+									<div class="overlay-links">
+										<a href="{% url 'kegg_page' %}"><i class="fa fa-link"></i></a>
+										<a href="{% static 'images/portfolio-5.png' %}" class="popup-img"><i class="fa fa-search-plus"></i></a>
+									</div>
+								</div>
+						</div>
+						<div class="image-box-body">
+							<h3 class="title"><a href="{% url 'kegg_page' %}">KEGG DATABASE</a></h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci accusamus accusantium.</p>
+							<a href="{% url 'kegg_page' %}" class="link"><span>Read More</span></a>
+						</div>
+					</div>
+					<div class="image-box">
+						<div class="overlay-container">
+							<img src="{% static 'images/portfolio-6.png' %}" height="50%" alt="">
+							<div class="overlay">
+								<div class="overlay-links">
+									<a href="{% url 'go_page' %}"><i class="fa fa-link"></i></a>
+									<a href="{% static 'images/portfolio-6.png' %}" class="popup-img"><i class="fa fa-search-plus"></i></a>
+								</div>
+							</div>
+						</div>
+						<div class="image-box-body">
+							<h3 class="title"><a href="{% url 'go_page' %}">GO DATABASE</a></h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci accusamus accusantium.</p>
+							<a href="{% url 'go_page' %}" class="link"><span>Read More</span></a>
+						</div>
+					</div>
+					<div class="image-box">
+						<div class="overlay-container">
+							<img src="{% static 'images/portfolio-7.png' %}" alt="">
+							<div class="overlay">
+								<div class="overlay-links">
+									<a href="{% url 'microRNA_page' %}"><i class="fa fa-link"></i></a>
+									<a href="{% static 'images/portfolio-7.png' %}" class="popup-img"><i class="fa fa-search-plus"></i></a>
+								</div>
+							</div>
+						</div>
+						<div class="image-box-body">
+							<h3 class="title"><a href="{% url 'microRNA_page' %}">microRNA DATABASE</a></h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci accusamus accusantium.</p>
+							<a href="{% url 'microRNA_page' %}" class="link"><span>Read More</span></a>
+						</div>
+					</div>
+					<div class="image-box">
+						<div class="overlay-container">
+							<img src="{% static 'images/portfolio-10.png' %}" alt="">
+							<div class="overlay">
+								<div class="overlay-links">
+									<a href="{% url 'report_page' %}"><i class="fa fa-link"></i></a>
+									<a href="images/portfolio-10.png" class="popup-img"><i class="fa fa-search-plus"></i></a>
+								</div>
+							</div>
+						</div>
+						<div class="image-box-body">
+							<h3 class="title"><a href="{% url 'report_page' %}"> NGS Projects Entrance</a></h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci accusamus accusantium.</p>
+							<a href="{% url 'report_page' %}" class="link"><span>Read More</span></a>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+</div>
+<!-- section end -->
+{% endblock %}
+
+

@@ -1,0 +1,150 @@
+{% extends 'bio_homolog/bio_homolog.base.html' %}
+{% load staticfiles %}
+{% block title %} Home Soybean Homolog Database {% endblock %}
+{% block css_js_after %}
+<link href="{% static "css/jquery.dataTables.min.css" %}" rel="stylesheet">
+<link href="{% static "css/dataTables.colVis.css" %}" rel="stylesheet">
+<link href="{% static "css/dataTables.tableTools.min.css" %}" rel="stylesheet">
+<link href="{% static "css/doc.css" %}" rel="stylesheet">
+<link href="{% static "css/my.css" %}" rel="stylesheet">
+<link href="{% static "css/bio_homolog.css" %}" rel="stylesheet">
+<link rel="stylesheet" href="{% static "css/style_d3.css" %}" type="text/css" />
+<script src="{% static "plugins/jquery-2.2.4.min.js" %}" type="application/javascript"></script>
+<script type="text/javascript" src="{% static "plugins/pic.js" %}">
+<script src="{% static "plugins/d3.v3.min.js" %}" type="application/javascript"></script>
+<script src="{% static "js/parsing_species_hierarchy.js" %}" type="application/javascript"></script>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+<div class="panel panel-info" id='panel-homolog-1'>
+	<div class="panel-heading">
+		<h3 class="panel-title">Introduction</h3>
+	</div>
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-md-7">
+				<div class="row">
+					<div class="col-md-12">
+						<p class="n1">
+							Plant Homolog Database (PHD) is a database composed of plant homologous genes. It combines phylogenetic and heuristic best-match approaches, yielding an accurate collection of more than 14,000 homologous groups covering multiple different species (including rice, Arabidopsis thaliana, tomato, maize, sorghum, etc).
+						</p>
+						<p class="n1">
+							PHD provides highly interactive visualizations of multiple sequence alignment, phylogenetic tree, natural selection at each tree node/branch site, and duplication/speciation events which can be used for inference of ortholog, in-paralogs and out-paralogs.
+						</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="panel panel-info">
+							<div class="panel-heading">
+								<h3 class="panel-title">Search</h3>
+							</div>
+							<div class="panel-body">
+								<form action="/home/search" accept-charset="UTF-8" method="post">
+									<input name="utf8" type="hidden" value="&#x2713;" />
+									<input type="hidden" name="authenticity_token" value="Eq9aNMBK0h0eoq2cXBs3X2490bIr7dIPbtyEj/gV534ggLJOmxi/KM810Z9q0z9kliLtZaEbvXhi5ysMTPTL1A==" />
+									<div class="form-group">
+										<input class="form-control" name="q" placeholder="Search" type="text" />
+									</div><input class="btn btn-primary" type="submit" value="Search" /> 
+									<br />Example: Group 
+									<a href="/groups/PHG-00015">PHG-00015</a> 
+									or Gene 
+									<a href="/genes/Os09g0536700">Os09g0536700</a> 
+									or Species 
+									<a href="/specieses/ORYSJ">Oryza sativa subsp. japonica</a>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-5">
+				<div class="imgbox">
+					<ul>
+						<li style="display: block"><img src="http://phd.big.ac.cn/assets/index/1-0b45c00ed41e52033924a844f26ba54b05fd33b5dc522a7401804af8b074ec5f.png" />
+						</li>
+						<li>
+							<img src="http://phd.big.ac.cn/assets/index/2-812620dd3ed2d0be6c219ad200c6e32907eaff4d13f422688b421771afac4b20.png" />
+						</li>
+						<li>
+							<img src="http://phd.big.ac.cn/assets/index/3-47b5b56fead870b8b22cf69449541eaad0537730094c5b25abe64329190663c5.png" />
+						</li>
+						<li>
+							<img src="http://phd.big.ac.cn/assets/index/4-83b1347d26ec5ebe9f4c50e229f27be351dee813d30c1b0a8df1d146c2ed119e.png" />
+						</li>
+						<li>
+							<img src="http://phd.big.ac.cn/assets/index/5-c57b47892fa2bbab03e65aeb6300af8b901641af35ffeaa21d37b6b7a5540eb2.png" />
+						</li>
+					</ul>
+					<div class="title_bg common"></div>
+					<div class="title common"></div>
+					<div class="pager common">
+						<ul>
+							<li>5</li>
+							<li>4</li>
+							<li>3</li>
+							<li>2</li>
+							<li style="background:#226687;"> 1</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="row">
+	<div class="col-md-12">
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<h3 class="panel-title">Data Statistics</h3>
+			</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-md-3">
+						<ul class="nav nav-divider overview" data-url="/home/overview">
+							<li>
+								<h3><span class="o1">14,739</span> <small>Homolog groups</small> </h3>
+							</li>
+							<li>
+								<h3><span class="o2">403,265</span> <small>Genes</small> </h3>
+							</li>
+							<li>
+								<h3><span class="o3">17</span> <small>Species</small> </h3>
+							</li>
+						</ul>
+					</div>
+					<div class="col-md-9" id="graph">
+						<img src="{% static "images/Hirechy.png" %}">
+						<!--<script type="application/javascript">
+							$.hierarchyGraphPort({lastPileLablesOn: 1});
+						</script>-->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+<!--<script type="application/javascript">
+	$("#graph").ready($.hierarchyGraphPort({lastPileLablesOn: 1}))
+</script>-->
+{% endblock %}
+
+{% block footer %}
+<script src="{% static "js/index.min.js" %}"></script>
+<script src="{% static "js/jquery.dataTables.min.js" %}"></script>
+<script src="{% static "js/dataTables.colVis.min.js" %}"></script>
+<script src="{% static "js/dataTables.tableTools.min.js" %}"></script>
+<script src="{% static "js/index1.min.js" %}"></script>
+<script src="{% static "js/highcharts.js" %}"></script>
+<script src="{% static "js/heatmap.js" %}"></script>
+<script src="{% static "js/exporting.js" %}"></script>
+<script src="{% static "js/newick.js" %}"></script>
+<script src="{% static "js/index2.min.js" %}"></script>
+{% endblock %}

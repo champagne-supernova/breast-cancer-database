@@ -1,0 +1,256 @@
+{% extends 'bio_base/base.html' %}
+{% load staticfiles %}
+{% block title %} Glycine Max Information {% endblock %}
+{% block css_js_after %}
+<link href="{% static "css/galym_max.css" %}" rel="stylesheet">
+<script type="text/javascript" src="{% static 'plugins/jquery.min.js' %}"></script>
+{% endblock %}
+{% block content %}
+<div class="list-group side_nav" id="nav_id">
+	<div class="list-group-item">
+		<a class="nav-link" href="#gs">Gene Summary</a>
+		<a class="pull-right toggle-collapse" href="#">
+			<i class="fa fa-plus-square-o">
+			</i>
+		</a>
+	</div>
+
+	<div class="list-group-item">
+		<a class="nav-link" href="#gc">Genomic Context</a>
+		<a class="pull-right toggle-collapse" href="#">
+			<i class="fa fa-plus-square-o">
+			</i>
+		</a>
+	</div>
+
+	<div class="list-group-item">
+		<a class="nav-link" href="#">Transcripts</a>
+		<a class="pull-right toggle-collapse" href="#">
+			<i class="fa fa-plus-square-o">
+			</i>
+		</a>
+	</div>
+
+	<div class="list-group-item">
+		<a class="nav-link" href="#expr">Expression</a>
+		<a class="pull-right toggle-collapse" href="#">
+			<i class="fa fa-plus-square-o">
+			</i>
+		</a>
+	</div>
+
+	<div class="list-group-item">
+		<a class="nav-link" href="#hm">Homology</a>
+		<a class="pull-right toggle-collapse" href="#">
+			<i class="fa fa-plus-square-o">
+			</i>
+		</a>
+	</div>
+
+	<div class="list-group-item">
+		<a class="nav-link" href="#vr">Variation</a>
+		<a class="pull-right toggle-collapse" href="#">
+			<i class="fa fa-plus-square-o">
+			</i>
+		</a>
+	</div>
+
+	<div class="list-group-item">
+		<a class="nav-link" href="#dd">Post-translational</a>
+		<a class="pull-right toggle-collapse" href="#">
+			<i class="fa fa-plus-square-o">
+			</i>
+		</a>
+	</div>
+
+	<div class="list-group-item">
+		<a class="nav-link" href="#lt">Literature</a>
+		<a class="pull-right toggle-collapse" href="#">
+			<i class="fa fa-plus-square-o">
+			</i>
+		</a>
+	</div>
+
+	<div class="list-group-item">
+		<a class="nav-link" href="#wk">Community Annotation</a>
+		<a class="pull-right toggle-collapse" href="#">
+			<i class="fa fa-plus-square-o">
+			</i>
+		</a>
+	</div>
+
+	<div class="list-group-item">
+		<a class="nav-link" href="#gb">Genome Browser</a>
+		<a class="pull-right toggle-collapse" href="#">
+			<i class="fa fa-plus-square-o">
+			</i>
+		</a>
+	</div>
+
+	<div class="list-group-item">
+		<a class="nav-link" href="#ont">Gene Ontology</a>
+		<a class="pull-right toggle-collapse" href="#">
+			<i class="fa fa-plus-square-o">
+			</i>
+		</a>
+	</div>
+
+	<div class="list-group-item">
+		<a class="nav-link" href="#kegg">KEGG</a>
+		<a class="pull-right toggle-collapse" href="#">
+			<i class="fa fa-plus-square-o">
+			</i>
+		</a>
+	</div>
+
+	<div class="list-group-item">
+		<a class="nav-link" href="#qtl">QTL</a>
+		<a class="pull-right toggle-collapse" href="#">
+			<i class="fa fa-plus-square-o">
+			</i>
+		</a>
+	</div>
+
+	<div class="list-group-item">
+		<a class="nav-link" href="#al">Additional Links</a>
+		<a class="pull-right toggle-collapse" href="#">
+			<i class="fa fa-plus-square-o">
+			</i>
+		</a>
+	</div>
+
+	<div class="list-group-item">
+		<a class="link_top" href="#">
+			Top
+		</a>
+	</div>
+
+	<div class="clearfix">
+	</div>
+</div>
+
+<section class="main-container" id="gs">
+	<div class="container">
+		<div class="col-md-12">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title"><strong>Gene Ontology</strong></h3>
+				</div>
+					<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>ID</th>
+							<th>Description</th>
+							<th>Namespace</th>
+						</tr>
+					</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>Os01g0100100</td>
+								<td>Chr1: 2983-10815 (+)</td>
+								<td>Expression; Homology; Variation; Literature; Wiki</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>Os01g0100100</td>
+								<td>Chr1: 2983-10815 (+)</td>
+								<td>Expression; Homology; Variation; Literature; Wiki</td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td>Os01g0100100</td>
+								<td>Chr1: 2983-10815 (+)</td>
+								<td>Expression; Homology; Variation; Literature; Wiki</td>
+							</tr>
+						</tbody>
+				</table>	
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="main-container">
+	<div class="container">
+		<div class="col-md-12">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title"><strong>KEGG Pathway</strong></h3>
+				</div>
+					<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>KO ID</th>
+							<th>Description</th>
+							<th>Subclass</th>
+						</tr>
+					</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>Os01g0100100</td>
+								<td>Chr1: 2983-10815 (+)</td>
+								<td>Expression; Homology; Variation; Literature; Wiki</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>Os01g0100100</td>
+								<td>Chr1: 2983-10815 (+)</td>
+								<td>Expression; Homology; Variation; Literature; Wiki</td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td>Os01g0100100</td>
+								<td>Chr1: 2983-10815 (+)</td>
+								<td>Expression; Homology; Variation; Literature; Wiki</td>
+							</tr>
+						</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+<script>
+	/*$('.toggle-collapse').click(function(){
+		var collapsed=$(this).find('i').hasClass('fa-plus-square-o');
+        
+    	$('.faq-links').find('i').removeClass('fa-minus-square-o');
+   	 
+		if(collapsed)
+			$(this).find('i').toggleClass('fa-plus-square-o fa-2x fa-minus-square-o fa-2x')
+		else{
+			$('.faq-links').find('i').addClass('fa-plus-square-o');
+		}
+	})
+	
+	$(document).ready(function(){
+		$('.fa-plus-square-o').toggle(function(){
+			$(this).next("#gs").animate({height: 'toggle', opacity: 'toggle'}, "slow");
+		},function(){
+		$(this).next("#gs").animate({height: 'toggle', opacity: 'toggle'}, "slow");})
+	})*/	
+
+	$(document).ready(function() {
+	var stickyNavTop = $('#nav_id').offset().top;
+ 
+	var stickyNav = function(){
+	var scrollTop = $(window).scrollTop();
+      
+	if (scrollTop > stickyNavTop) { 
+    	$('#nav_id').addClass('sticky');
+	} else {
+    	$('#nav_id').removeClass('sticky'); 
+	}
+	};
+ 
+	stickyNav();
+ 
+	$(window).scroll(function() {
+    	stickyNav();
+	});
+	});
+</script>
+
+{% endblock %}

@@ -1,0 +1,183 @@
+{% extends 'bio_expr/bio_expr.base.html' %}
+{% load staticfiles %}
+{% block title %} Projects - Soybean Expression Database {% endblock %}
+
+{% block content %}
+<div class="container">
+<div class="panel panel-default">
+    <div class="panel-heading" style="height: 40px; padding: 10px 15px 10px 15px">
+        <h3 class="panel-title" style="font-weight: bold"><span class="glyphicon glyphicon-list-alt"></span> Project Overview</h3>
+    </div>
+    <div class="panel-body">
+    </div>
+    
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>Project ID</th>
+                <th>Project Name</th>
+                <th>Platform</th>
+                <th>Year</th>
+                <th>Submitter</th>
+                <th>Experiment Number</th>
+            </tr>
+            </thead>
+            <tbody>
+            
+                <tr>
+                    <td>SRP013556</td>
+                    <td>Transcriptome analysis of rice mature root tissue and root tips in early development by massive parallel sequencing</td>
+                    <td>Illumina Genome Analyzer II</td>
+                    <td>2012</td>
+                    <td>Chodavarapu RK, Feng S, Ding B, Simon SA, Lopez D, Jia Y, Wang GL, Meyers BC, Jacobsen SE, Pellegrini M.</td>
+                    <td><a href="experiment?project=SRP013556" target="_blank">3</a></td>
+                </tr>
+            
+                <tr>
+                    <td>DRP000568</td>
+                    <td>Simultaneous RNA-Seq Analysis of a Mixed Transcriptome of Rice and Blast Fungus Interaction</td>
+                    <td>Illumina Genome Analyzer IIx</td>
+                    <td>2012</td>
+                    <td>Kawahara Y, Oono Y, Kanamori H, Matsumoto T, Itoh T, Minami E.</td>
+                    <td><a href="experiment?project=DRP000568" target="_blank">1</a></td>
+                </tr>
+            
+                <tr>
+                    <td>ERP001962</td>
+                    <td>Strand-specific RNA-seq reveals widespread occurrence of novel cis-natural antisense transcripts in rice</td>
+                    <td>Illumina HiSeq 2000</td>
+                    <td>2012</td>
+                    <td>Tingting Lu, Chuanrang Zhu, Guojun Lu, Yunli Guo, Yan Zhou, Zhiyong Zhang, Yan Zhao, Wenjun Li, Ying Lu, Weihua Tang, Qi Feng and Bin Han</td>
+                    <td><a href="experiment?project=ERP001962" target="_blank">1</a></td>
+                </tr>
+            
+                <tr>
+                    <td>SRP028376</td>
+                    <td>RNA-sequencing reveals previously unannotated protein- and microRNA-coding genes expressed in aleurone cells of rice seeds</td>
+                    <td>Illumina HiSeq 2000</td>
+                    <td>2013</td>
+                    <td>Kenneth A. Watanabe,Patricia Ringler,Lingkun Gu,Qingxi J. Shen</td>
+                    <td><a href="experiment?project=SRP028376" target="_blank">4</a></td>
+                </tr>
+            
+                <tr>
+                    <td>SRP017256</td>
+                    <td>Plants regenerated from tissue culture contain stable epigenome changes in rice</td>
+                    <td>Illumina HiSeq 2000</td>
+                    <td>2013</td>
+                    <td>  Stroud H, Simon S, Feng S, Meyers BC, Jacobsen SE</td>
+                    <td><a href="experiment?project=SRP017256" target="_blank">9</a></td>
+                </tr>
+            
+                <tr>
+                    <td>SRP028766</td>
+                    <td>Spatio-Temporal Transcript Profiling of Rice Roots and Shoots in Response to Phosphate Starvation and Recovery</td>
+                    <td>Illumina HiSeq 2000</td>
+                    <td>2013</td>
+                    <td>David Secco,Mehdi Jabnoune,Hayden Walker,Huixia Shou,Ping Wu,Yves Poirier and James Whelan</td>
+                    <td><a href="experiment?project=SRP028766" target="_blank">126</a></td>
+                </tr>
+            
+                <tr>
+                    <td>SRP047482</td>
+                    <td>Genome-wide screening and functional analysis identify a large number of long noncoding RNAs involved in the sexual reproduction of rice</td>
+                    <td>Illumina HiSeq 2000</td>
+                    <td>2014</td>
+                    <td> Yu-Chan Zhang, Jian-You Liao, Ze-Yuan Li, Yang Yu, Jin-Ping Zhang, Quan-Feng Li, Liang-Hu Qu, Wen-Sheng Shu1 and Yue-Qin Chen</td>
+                    <td><a href="experiment?project=SRP047482" target="_blank">3</a></td>
+                </tr>
+            
+                <tr>
+                    <td>DRP002329</td>
+                    <td>Genome-Wide Study of KNOX Regulatory Network Reveals Brassinosteroid Catabolic Genes Important for Shoot Meristem Function in Rice</td>
+                    <td>Illumina HiSeq 2000</td>
+                    <td>2014</td>
+                    <td>Katsutoshi Tsuda, Nori Kurata, Hajime Ohyanagi, and Sarah Hakea</td>
+                    <td><a href="experiment?project=DRP002329" target="_blank">16</a></td>
+                </tr>
+            
+                <tr>
+                    <td>DRP001141</td>
+                    <td>Gene expression profiling of the early cadmium response includes abiotic stress signaling pathway in rice</td>
+                    <td>Illumina Genome Analyzer IIx</td>
+                    <td>2014</td>
+                    <td>Oono Y, Yazawa T, Kawahara Y, Kanamori H, Kobayashi F, Sasaki H, Mori S, Wu J, Handa H, Itoh T, Matsumoto T</td>
+                    <td><a href="experiment?project=DRP001141" target="_blank">18</a></td>
+                </tr>
+            
+                <tr>
+                    <td>SRP035332</td>
+                    <td>Transcriptome profiling in reciprocal hybrids and tetraploids constructed from subspecies japonica and indica of Asian rice (Oryza sativa L.)</td>
+                    <td>Illumina HiSeq 2000</td>
+                    <td>2014</td>
+                    <td>Xu C, Bai Y, Lin X, Zhao N, Hu L, Gong Z, Wendel JF, Liu B.</td>
+                    <td><a href="experiment?project=SRP035332" target="_blank">1</a></td>
+                </tr>
+            
+                <tr>
+                    <td>SRP043448</td>
+                    <td>Mutation of a major CG methylase in rice causes genome-wide hypomethylation, dysregulated genome expression, and seedling lethality</td>
+                    <td>Illumina HiSeq 2000</td>
+                    <td>2014</td>
+                    <td>Lanjuan Hu,Ning Li,Chunming Xu,Silin Zhong,Xiuyun Lin,Jingjing Yang,Tianqi Zhou,Anzhi Yuliang,Ying Wu,Yun-Ru Chen,Xiaofeng Cao,Assaf Zemach,Sachin Rustgi,Diter von Wettstein,and Bao Liua</td>
+                    <td><a href="experiment?project=SRP043448" target="_blank">3</a></td>
+                </tr>
+            
+                <tr>
+                    <td>DRP001762</td>
+                    <td>Rice germline-specific Argonaute MEL1 protein binds to phasiRNAs generated from more than 700 lincRNAsNA</td>
+                    <td>Illumina HiSeq 2000</td>
+                    <td>2014</td>
+                    <td>Reina Komiya, Hajime Ohyanagi, Mitsuru Niihama, Toshiaki Watanabe, Mutsuko Nakano, Nori Kurata, and Ken-Ichi Nonomura</td>
+                    <td><a href="experiment?project=DRP001762" target="_blank">1</a></td>
+                </tr>
+            
+                <tr>
+                    <td>SRP048474</td>
+                    <td>Oryza sativa Nipponbare RNAseq of cslf6 and other rice cell wall mutants and controls </td>
+                    <td>Illumina HiSeq 2000</td>
+                    <td>2014</td>
+                    <td>JGI</td>
+                    <td><a href="experiment?project=SRP048474" target="_blank">9</a></td>
+                </tr>
+            
+                <tr>
+                    <td>SRP049212</td>
+                    <td>Comparative transcriptome analysis among closely related rice strains</td>
+                    <td>Illumina HiSeq 2000</td>
+                    <td>2014</td>
+                    <td>Susan wessler</td>
+                    <td><a href="experiment?project=SRP049212" target="_blank">3</a></td>
+                </tr>
+            
+                <tr>
+                    <td>SRP052306</td>
+                    <td>Genome-wide transcriptome analysis of rice in response to controlled drought stress at vegetative</td>
+                    <td>Illumina HiSeq 2000</td>
+                    <td>2015</td>
+                    <td>Venkategowda R, Srivastava SK, Pereira A</td>
+                    <td><a href="experiment?project=SRP052306" target="_blank">4</a></td>
+                </tr>
+            
+                <tr>
+                    <td>SRP052309</td>
+                    <td>Transcriptome analysis of Osbhlh148 mutant plants under controlled drought stress and well-watered conditions at vegetative stage</td>
+                    <td>Illumina HiSeq 2000</td>
+                    <td>2015</td>
+                    <td>  Venkategowda R, Srivastava SK, Pereira A</td>
+                    <td><a href="experiment?project=SRP052309" target="_blank">8</a></td>
+                </tr>
+            
+                <tr>
+                    <td>SRP052310</td>
+                    <td>Transcriptome analysis of Oshsfa2e mutant plants under controlled drought stress and well-watered conditions at vegetative stage</td>
+                    <td>Illumina HiSeq 2000</td>
+                    <td>2015</td>
+                    <td>Venkategowda R, Srivastava SK, Pereira A</td>
+                    <td><a href="experiment?project=SRP052310" target="_blank">8</a></td>
+                </tr>
+            </tbody>
+        </table>
+</div>
+</div>
+{% endblock %}

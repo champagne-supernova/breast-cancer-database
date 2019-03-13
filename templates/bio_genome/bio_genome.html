@@ -1,0 +1,98 @@
+{% extends 'bio_base/base.html' %}
+{% load staticfiles %}
+{% block title %} Genome {% endblock %}
+{% block content %}
+<!--chromosome image section start -->
+<section class="main-container">
+	<div class="container">
+		<div class="row">
+			<!-- main start -->
+			<!-- ================ -->
+			<div class="main col-md-12">
+
+				<!-- page-title start -->
+				<!-- ================ -->
+				<h1 class="page-title">Idiogram of the glycine max chromosome</h1>
+				<!-- page-title end -->
+				<pre>
+Idiogram from measurements of the glycine max chromosome set, displaying six metacentric and fourteen submetacentric chromosomes.
+Note that the chromosomes 1–2; 3–4; 5–6; 9–10; 11–12 and 15–16 show the same mitotic morphology.
+Besides, structural changes probably occurred in the chromosomes 13, 14, 17, 18, 19 and 20
+and modifications in the arm length ratios of the chromosomes 7 and 8.
+					<img src="{% static './images/Idiogram-glycine-max.jpg' %}">
+Mitotic evidence for the tetraploid nature of Glycine max provided by high quality karyograms. Plant Syst Evol
+Article · May 2007 · Plant Systematics and Evolution
+W. R. Clarindo, …, B. M. G. Alves
+				</pre>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- chromosome image section end-->
+
+<!--chromosome url section start-->
+<section class="main-container">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="chrbox">
+					<ul class="chromosome"></ul>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Accession</th>
+							<th>Chromosome</th>
+							<th>Links</th>
+						</tr>
+					</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>Os01g0100100</td>
+								<td>Chr1: 2983-10815 (+)</td>
+								<td>Expression; Homology; Variation; Literature; Wiki</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>Os01g0100100</td>
+								<td>Chr1: 2983-10815 (+)</td>
+								<td>Expression; Homology; Variation; Literature; Wiki</td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td>Os01g0100100</td>
+								<td>Chr1: 2983-10815 (+)</td>
+								<td>Expression; Homology; Variation; Literature; Wiki</td>
+							</tr>
+						</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</section>
+<!--chromosome url section end-->
+
+<!-- page-top start-->
+<!-- Accession	Chromosome	Links -->
+<div class="page-top">
+	<div class="container">
+		<div class="row">
+
+		</div>
+	</div>
+</div>
+<!-- page-top end -->
+{% endblock %}
+
+{% block footer %}
+<script type="text/javascript" src="{% static "js/genome.js" %}"></script>
+	<script>
+		$(document).ready(function(){
+			chr_pq_arm(".chromosome","http://36.110.17.162:8000/data.json",10.0)
+		});
+	</script>
+{% endblock %}

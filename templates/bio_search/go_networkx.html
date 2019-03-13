@@ -1,0 +1,28 @@
+{% extends 'bio_base/base.html' %}
+{% load staticfiles %}
+{% block title %} GO Networkx results {% endblock %}
+
+{% block css_js_after %}
+<link href="{% static "css/go_networkx.css" %}" rel="stylesheet">
+<script src="{% static "plugins/jquery-2.2.4.min.js" %}" type="application/javascript"></script>
+<script src="{% static "plugins/d3.min.js" %}" type="application/javascript"></script>
+<script src="{% static "plugins/release/go.js" %}"></script>
+<script src="{% static "js/go_networkx.js" %}" type="application/javascript"></script>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+	<section class="main-container">
+		<div class="row">
+			<div class="main col-md-12">
+				<div class="container" id="canvas" ></div>
+				<div id="infoBoxHolder" ></div>
+			</div>
+		</div>
+	</section>
+</div>
+
+<script>
+	$().go_networkx("{{ go_networkx | escapejs }}")
+</script>
+{% endblock %}

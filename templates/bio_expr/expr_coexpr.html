@@ -1,0 +1,66 @@
+{% extends 'bio_expr/bio_expr.base.html'%}
+{% load staticfiles %}
+{% block title %} Co-expression Soybean Expression Database {% endblock %}
+{% block css_js_after %}
+<link href="{% static "css/my.css" %}" rel="stylesheet">
+<link href="{% static "css/doc.css" %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?3485b34ebae86f97fc6537472457f99f";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+<div class="container">
+<div class="panel panel-default">
+    <div class="panel-heading" style="height: 40px; padding: 10px 15px 10px 15px">
+        <h3 class="panel-title"><span class="glyphicon glyphicon-search"></span> Search</h3>
+    </div>
+    <div class="panel-body"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="bs-docs-sidebar" role="complementary">
+                    <ul class="nav bs-docs-sidenav">
+                        <li class="active"><a href="#co-expression" data-toggle="tab">Co-Expression</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-8 tab-content myform">
+                <br>
+                <div id="co-expression">
+                    <form class="form-horizontal" method="get" action="co-expression" id="coForm">
+                        <div class="form-group">
+                            <label class="control-label col-sm-3">Gene ID:<br>(max:100) </label>
+                            <div class="col-sm-8">
+                                    <textarea class="form-control" name="gene" id="co-gene" rows="5"
+                                              required></textarea>
+                                <span class="help-block">e.g.,&nbsp;<a href="#"><em id="egCo-gene">Os06g0651900,Os06g0324800,Os02g0202200,Os03g0394200</em></a></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-3">Pearson's r-value</label>
+                            <div class="col-sm-2">
+                                <input type="text" value="0.9" name="co" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class='col-sm-5 col-sm-offset-3'>
+                                <input type='submit' value="Search" class='btn btn-primary'/>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+{% endblock %}

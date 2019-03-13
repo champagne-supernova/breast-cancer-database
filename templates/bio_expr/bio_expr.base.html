@@ -1,0 +1,90 @@
+{% extends 'bio_base/base_1.html' %}
+{% load staticfiles %}
+{% block title %} Expression Information {% endblock %}
+{% block css_js_after %}
+<link href="{% static "css/page.min.css" %}"rel="stylesheet">
+<link href="{% static "bootstrap/css/bootstrap.theme.min.css" %}" rel="stylesheet">
+<link href="{% static "css/doc.css" %}" rel="stylesheet">
+<link href="{% static "css/select2.min.css" %}" rel="stylesheet">
+<link href="{% static "css/jquery.dataTables.min.css" %}" rel="stylesheet">
+<link href="{% static "css/my.css" %}" rel="stylesheet">
+<link href="{% static "css/custom.css" %}" rel="stylesheet">
+
+{% endblock %}
+
+{% block nav_bar_content %}
+<div class="main-navigation animated">
+	<!-- navbar start -->
+	<!-- ================ -->
+	<nav class="navbar navbar-default" role="navigation">
+		<div class="container-fluid">
+
+			<!-- Toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<a href="{% url 'expr_page' %}"><span class="glyphicon glyphicon-home"></span> Home</a>
+					</li>
+					<!-- mega-menu start -->
+					<li class="dropdown mega-menu">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-eye-open"></span> Browse</a>
+						<ul class="dropdown-menu" style="left: auto; width: 250px">
+							<li>
+								<ul class="menu">
+									<li><a href="{% url "expr_projects_page" %}"><i class="icon-right-open"></i> RNA-Seqs Project </a></li>
+									<li><a href="#"><i class="icon-right-open"></i> All Annotated Genes </a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<!-- mega-menu end -->
+
+					<!-- mega-menu start -->
+					<li class="dropdown mega-menu active">
+					<a href="{% url 'sub_expr_page' %}" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-search"></span> Search</a>
+						<ul class="dropdown-menu" style="left: auto; width: 250px">
+							<li>
+								<ul class="menu">
+									<li><a href="{% url 'sub_expr_page' %}"><i class="icon-right-open"></i> Expression </a></li>
+									<li><a href="{% url 'co_expression_page' %}"><i class="icon-right-open"></i> Co-expression </a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<!-- mega-menu end -->
+					
+					<!-- mega-menu start -->
+					<li>
+						<a href="{% url 'expr_download_page' %}"><span class="glyphicon glyphicon-download"></span>  Downloads </a>
+					</li>
+					<!-- mega-menu end -->
+
+					<!-- mega-menu start -->
+					<li class="mega-menu">
+						<a href="{% url 'expr_faq_page' %}" ><span class="glyphicon glyphicon-question-sign"></span> FAQ</a>
+					</li>
+					<!-- mega-menu end -->
+
+					<li>
+						<a href="{% url "contact_page" %}"><span class="glyphicon glyphicon-send"></span> Contact us </a>
+					</li>
+					<!-- mega-menu end -->
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- navbar end -->
+</div>
+<!-- main-navigation end -->
+{% endblock %}
+

@@ -1,0 +1,79 @@
+{% extends 'bio_base/base.html' %}
+{% load staticfiles %}
+{% block title %} Honor GO Database {% endblock %}
+{% block content %}
+<section class="main-container">
+	<div class="page-top">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					<div class="call-to-action">
+						<h1 class="title">GO SEARCH</h1>
+						<form class="form-horizontal" role="form" action="{% url 'go_networkx' %}" method="post">
+							{% csrf_token %}
+							<div class="form-group">
+								<div class="col-sm-10 col-md-offset-1">
+									<input type="go" class="form-control" id="go" name="go_networkx" placeholder="iput sequence data">
+									<p>e.g.: Os01g0192000; Os07g0143700; Os01g0883800</p>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-10 col-md-offset-1">
+									<button type="submit" class="btn btn-default">GO SEARCH</button>
+								</div>
+							</div>
+						</form>
+					 </div>
+				 </div>
+			 </div>
+		 </div>
+	</div>
+</section>
+
+<section class="main-container pagination pagination-centered">
+	<div class="row">
+		<div class="col-md-12">
+				<table class="table table-hover">
+					<thead>
+						<th>#</th>
+						<th>ID</th>
+						<th>Symbol</th>
+						<th>Locus</th>
+						<th>GO</th>
+					</thead>
+					<tbody>
+						{% for record in objects.object_list %}
+							<tr>
+								<td> {{ forloop.counter }} </td>
+								<td> {{ record.gene_id }} </td>
+								<td> {{ record.gene_symbol }} </td>
+								<td> {{ record.locus_tag }} </td>
+								<td> {{ record.go_info }} </td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+
+			<div class="pagination pagination-centered">
+				<!--<span class="step-links">
+					if objects.has_previous %}
+						<a href="?page={{ objects.previous_page_number }}">Last page</a>
+					{% endif %}
+ 
+					<span class="current">
+						page {{ objects.number }}
+					</span>
+					
+					<span class="current">
+						 Sum pages: {{ objects.paginator.num_pages }}
+					</span>
+ 
+					{% if objects.has_next %}
+						<a href="?page={{ objects.next_page_number }}">Next page</a>
+					{% endif %} 
+				</span>-->
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}

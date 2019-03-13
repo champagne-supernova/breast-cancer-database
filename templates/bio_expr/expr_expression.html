@@ -1,0 +1,275 @@
+{% extends 'bio_expr/bio_expr.base.html' %}
+{% load staticfiles %}
+{% block title %} Search - Soybean Expression Database {% endblock %}
+{% block css_js_after %}
+<link href="{% static "css/doc.css" %}" rel="stylesheet">
+<link href="{% static "css/my.css" %}" rel="stylesheet">
+
+<script src="{% static "plugins/jquery-2.2.4.min.js" %}"></script>
+<script src="{% static "js/search.js" %}"></script>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+	<script>
+    	var _hmt = _hmt || [];
+    	(function () {
+        	var hm = document.createElement("script");
+        	hm.src = "//hm.baidu.com/hm.js?3485b34ebae86f97fc6537472457f99f";
+        	var s = document.getElementsByTagName("script")[0];
+        	s.parentNode.insertBefore(hm, s);
+   		 })();
+	</script>
+	<div class="panel panel-default">
+		<div class="panel-heading" style="height: 40px; padding: 10px 15px 10px 15px">
+			<h3 class="panel-title"><span class="glyphicon glyphicon-search"></span> Search</h3>
+		</div>
+		<div class="panel-body"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3">
+					<div class="bs-docs-sidebar" role="complementary">
+						<ul class="nav bs-docs-sidenav">
+							<li class="active"><a href="#condition" data-toggle="tab">Gene Expression</a></li>
+							<li><a href="#transcript" data-toggle="tab">Transcript Expression</a></li>
+							<li><a href="#keyword" data-toggle="tab">Project</a></li>
+							<li><a href="#position" data-toggle="tab">Chromosome Region</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="col-md-8 tab-content myform">
+					<br>
+					<div id="keyword" class="tab-pane">
+						<form class="form-horizontal" action="project" method="post">
+							<div class="form-group">
+								<label class="control-label col-sm-3">Keywords: </label>
+								<div class="col-sm-5">
+									<input type="text" class="form-control" name="keyword" id="keywords" placeholder="Enter a SRA project id or keyword"/>
+								</div>
+								<label class='control-label'>e.g., <a href="#"><em id="egKeyword">stress</em></a></label>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-2 col-sm-offset-3">
+									<input type="submit" class="btn btn-primary" value="Search"/>
+								</div>
+							</div>
+						</form>
+					</div>
+
+                <div class="tab-pane active" id="condition">
+					<form class="form-horizontal" role="form" action="{% url "search_query" %}" method="get" id="conditionForm">
+						<h4>Required:</h4>
+                        <hr>
+                        <div class="form-group">
+                            <label class="control-label col-sm-3">Gene ID:<br>(max:100) </label>
+                            <div class="col-sm-8">
+                                <textarea class="form-control" name="gene" id="gene" rows="5"></textarea>
+                                <span class="help-block"><a href="#advanced" data-toggle="collapse" style="color:#337ab7">Advanced</a></span>
+								<span class="help-block">e.g.,&nbsp;<a href="#"><em id="egGene" style="color:#337ab7">AT1G27320,AT3G11540,AT5G35750,AT1G04310</em></a></span>
+                            </div>
+                        </div>
+                        <hr>
+
+                        <div class="collapse" id="advanced">
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Expression Level Cutoff: </label>
+                                <div class="col-sm-5">
+                                    <input type="text" class="form-control" name="cutoff" placeholder="Enter a number">
+                                </div>
+                            </div>
+
+							<div class="form-group">
+                                <label class="control-label col-sm-3">SRA Project ID: </label>
+                                <div class="col-sm-5">
+                                    <input type="text" class="form-control" name="sra" placeholder="SRA Project ID">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Tissue:</label>
+                                <div class="col-sm-5">
+                                    <select name="tissue1" class="form-control" id="tissueSel">
+										<option value="default-tissuel">Please select </option>
+                                        <option value="Root">Root</option>
+										<option value="Embryo">Embryo</option>
+										<option value="Stress">Stress</option>
+										<option value="Flower">Flower</option>
+										<option value="Cotyledon/Leaf">Cotyledon/Leaf</option>    
+                                    </select>
+                                </div>
+                            </div>
+                           
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Hormone Type: </label>
+                                <div class="col-sm-5">
+                                    <select class="form-control" name="condition" id="condition">
+										<option value="default-condition"> Please select </option>
+										<option value="abscisic-acid"> Abscisic Acid </option>
+										<option value="auxin"> Auxin </option>
+										<option value="brassinosteroid"> Brassinosteroid </option>
+										<option value="cytokinin"> Cytokinin </option>
+										<option value="ethylene"> Ethylene </option>
+										<option value="gibberellin"> Gibberellin </option>
+										<option value="jasmonic-acid"> Jasmonic Acid </option>
+									</select>
+                                </div>
+                            </div>
+
+							 <div class="form-group">
+                                <label class="control-label col-sm-3">Platform: </label>
+                                <div class="col-sm-5">
+                                    <select class="form-control" name="platform" id="platform">
+										<option value="default-platform">Please select</option>
+                                        <option value="Illumina HiSeq 2000">Illumina HiSeq 2000</option>
+                                        <option value="Illumina Genome Analyzer IIx">Illumina Genome Analyzer IIx
+                                        </option>
+                                        <option value="Illumina Genome Analyzer II">Illumina Genome Analyzer II
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-5 col-sm-offset-3">
+                                <input type="submit" class="btn btn-primary" value="Search" id="submit"/>
+                            </div>
+                        </div>
+                    </form>
+				</div>
+
+                <!--Transcript -->
+                <div class="tab-pane" id="transcript">
+                    <form class="form-horizontal" action="query" method="get" id="transForm">
+                        <h4>Required:</h4>
+                        <hr>
+                        <div class="form-group">
+                            <label class="control-label col-sm-3">Transcript ID:<br>(max:100) </label>
+                            <div class="col-sm-8">
+                                <textarea class="form-control" name="transcriptome" id="trans" rows="5"></textarea>
+                                    <span class="help-block"><a href="#tAdvanced" data-toggle="collapse">Advanced</a></span>
+                                <span class="help-block">e.g.,&nbsp;<a href="#"><em id="egTrans">AT1G27320,AT3G11540,AT5G35750,AT1G04310</em></a></span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="collapse" id="tAdvanced">
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Expression Level Cutoff: </label>
+                                <div class="col-sm-5">
+                                    <input type="text" class="form-control" name="cutoff" placeholder="Enter a number">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">SRA Project ID: </label>
+                                <div class="col-sm-5">
+                                    <select class="form-control" name="project" id="prjSelt">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Tissue:</label>
+								<div class="col-sm-5">
+                                    <select name="tissue" class="form-control"  id="tissueSelt">
+                                        <option value="Root">Root</option>
+                                        <option value="Shoot">Shoot</option>
+                                        <option value="Anther">Anther</option>
+                                        <option value="Aleurone">Aleurone</option>
+                                        <option value="Panicle">Panicle</option>
+                                        <option value="Pistil">Pistil</option>
+                                        <option value="Leaf">Leaf</option>
+                                        <option value="Seed">Seed</option>
+									</select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Platform: </label>
+								<div class="col-sm-5">
+                                    <select class="form-control" name="platform" id="platformt">
+                                        <option value="Illumina HiSeq 2000">Illumina HiSeq 2000</option>
+                                        <option value="Illumina Genome Analyzer IIx">Illumina Genome Analyzer IIx</option>
+                                        <option value="Illumina Genome Analyzer II">Illumina Genome Analyzer II</option>
+									</select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Treatment: </label>
+								<div class="col-sm-5">
+									<select class="form-control" name="treatment" id="treatmentt"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Development Stage: </label>
+								<div class="col-sm-5">
+									<select class="form-control" name="devStage" id="devStaget"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-5 col-sm-offset-3">
+                                <input type="submit" class="btn btn-primary" value="Search"/>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div id="position" class="tab-pane">
+                    <form class="form-horizontal" method="post" action="position" id="positionForm">
+                        <div class="form-group">
+                            <label for="Gene" class="col-sm-3 control-label">Chromosome:</label>
+                            <div class="col-sm-5">
+                                <select name="chr" required class="form-control">
+                                    
+                                        <option value="1">Chr1</option>
+                                    
+                                        <option value="2">Chr2</option>
+                                    
+                                        <option value="3">Chr3</option>
+                                    
+                                        <option value="4">Chr4</option>
+                                    
+                                        <option value="5">Chr5</option>
+                                    
+                                        <option value="6">Chr6</option>
+                                    
+                                        <option value="7">Chr7</option>
+                                    
+                                        <option value="8">Chr8</option>
+                                    
+                                        <option value="9">Chr9</option>
+                                    
+                                        <option value="10">Chr10</option>
+                                    
+                                        <option value="11">Chr11</option>
+                                    
+                                        <option value="12">Chr12</option>
+                                    
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-3">Start Location:</label>
+                            <div class="col-sm-5">
+                                <input class="form-control" type="text" name="posStart" placeholder="Start position" id='start' required/>
+                            </div>
+                            <label class='control-label'>e.g., <a href="#"><em id='egStart'>1456789</em></a></label>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-3">End Location:</label>
+                            <div class="col-sm-5">
+                                <input class="form-control" type="text" name="posEnd" placeholder="End position" id='end' required/>
+                            </div>
+                            <label class='control-label'>e.g., <a href="#"><em id='egEnd'>2456789</em></a></label>
+                        </div>
+                        <div class='form-group'>
+                            <div class='col-sm-5 col-sm-offset-3'>
+                                <input type='submit' value="Search" class='btn btn-primary'/>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

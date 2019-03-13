@@ -1,0 +1,175 @@
+{% extends 'bio_homolog/bio_homolog.base.html' %}
+{% load staticfiles %}
+{% block title %} Species Soybean Homolog Database {% endblock %}
+{% block css_js_after %}
+<link href="{% static "css/doc.css" %}" rel="stylesheet">
+<link href="{% static "css/my.css" %}" rel="stylesheet">
+<link href="{% static "css/homolog_species.css" %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="container" id="main">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title"><span class="glyphicon glyphicon-user"></span> All Species</h3>
+		</div>
+		<div class="panel-body">
+			<table class="sortable table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th width="250px">Scientific Name</th>
+						<th width="200px">Common Name</th>
+						<th width="90px">Code</th>
+						<th width="120px">Taxonomy ID</th>
+						<th>Gene Count</th>
+						<th>Group Count</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><a href="/species/ARATH">Arabidopsis thaliana</a></td>
+						<td>Mouse-ear cress</td>
+						<td>ARATH</td>
+						<td>
+							<a href="http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=3702" target="_blank">3702</a>
+						</td>
+						<td>17304 (4.29%)</td>
+						<td>9241 (62.70%)</td>
+					</tr>
+					<tr>
+						<td><a href="/species/BRARP">Brassica rapa</a></td>
+						<td>Chinese cabbage</td>
+						<td>BRARP</td>
+						<td><a href="http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=51351" target="_blank">51351</a></td>
+						<td>24148 (5.99%)</td>
+						<td>9169 (62.21%)</td>
+					</tr>
+					<tr>
+						<td><a href="/species/SOYBN">Glycine max</a></td>
+						<td>Soybean</td><td>SOYBN</td>
+						<td><a href="http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=3847" target="_blank">3847</a></td>
+						<td>34207 (8.48%)</td>
+						<td>9471 (64.26%)</td>
+					</tr>
+					<tr>
+						<td><a href="/species/ORYBA">Oryza barthii</a></td>
+						<td>Rice</td><td>ORYBA</td>
+						<td>
+							<a href="http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=65489" target="_blank">65489</a>
+						</td>
+						<td>23630 (5.86%)</td>
+						<td>13519 (91.72%)</td>
+					</tr>
+					<tr>
+						<td><a href="/species/ORYBR">Oryza brachyantha</a></td>
+						<td>Rice</td>
+						<td>ORYBR</td>
+						<td>
+							<a href="http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=4533" target="_blank">4533</a>
+						</td>
+						<td>20236 (5.02%)</td>
+						<td>11948 (81.06%)</td>
+					</tr>
+					<tr>
+						<td><a href="/species/ORYGL">Oryza glaberrima</a></td>
+						<td>African rice</td>
+						<td>ORYGL</td>
+						<td><a href="http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=4538" target="_blank">4538</a></td>
+						<td>24031 (5.96%)</td>
+						<td>13032 (88.42%)</td>
+					</tr>
+					<tr>
+						<td><a href="/species/ORYGU">Oryza glumaepatula</a></td>
+						<td>Rice</td>
+						<td>ORYGU</td>
+						<td><a href="http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=40148" target="_blank">40148</a></td>
+						<td>24004 (5.95%)</td>
+						<td>13633 (92.50%)</td>
+					</tr>
+					<tr>
+						<td><a href="/species/ORYME">Oryza meridionalis</a></td>
+						<td>Rice</td>
+						<td>ORYME</td>
+						<td><a href="http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=40149" target="_blank">40149</a></td>
+						<td>20921 (5.19%)</td>
+						<td>12333 (83.68%)</td>
+					</tr>
+					<tr>
+						<td><a href="/species/ORYNI">Oryza nivara</a></td>
+						<td>Indian wild rice</td>
+						<td>ORYNI</td>
+						<td><a href="http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=4536" target="_blank">4536</a></td>
+						<td>24449 (6.06%)</td>
+						<td>13843 (93.92%)</td>
+					</tr>
+					<tr>
+						<td><a href="/species/ORYPU">Oryza punctata</a></td>
+						<td>Red rice</td>
+						<td>ORYPU</td>
+						<td><a href="http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=4537" target="_blank">4537</a></td>
+						<td>22764 (5.64%)</td>
+						<td>12815 (86.95%)</td>
+					</tr>
+					<tr>
+						<td><a href="/species/ORYRU">Oryza rufipogon</a></td>
+						<td>Brownbeard rice</td>
+						<td>ORYRU</td>
+						<td><a href="http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=4529" target="_blank">4529</a></td>
+						<td>24437 (6.06%)</td>
+						<td>13848 (93.95%)</td>
+					</tr>
+					<tr>
+						<td><a href="/species/ORYSI">Oryza sativa subsp. indica</a></td>
+						<td>Rice</td>
+						<td>ORYSI</td>
+						<td><a href="http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=39946" target="_blank">39946</a></td>
+						<td>26874 (6.66%)</td>
+						<td>13792 (93.57%)</td>
+					</tr>
+					<tr>
+						<td><a href="/species/ORYSJ">Oryza sativa subsp. japonica</a></td>
+						<td>Rice</td>
+						<td>ORYSJ</td>
+						<td><a href="http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=39946" target="_blank">39946</a></td>
+						<td>25295 (6.27%)</td>
+						<td>14739 (100.00%)</td>
+					</tr>
+					<tr>
+						<td><a href="/species/POPTR">Populus trichocarpa</a></td>
+						<td>Western balsam poplar</td>
+						<td>POPTR</td>
+						<td><a href="http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=3694" target="_blank">3694</a></td>
+						<td>24373 (6.04%)</td>
+						<td>9477 (64.30%)</td>
+					</tr>
+					<tr>
+						<td><a href="/species/SOLLC">Solanum lycopersicum</a></td>
+						<td>Tomato</td>
+						<td>SOLLC</td>
+						<td><a href="http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=4081" target="_blank">4081</a></td>
+						<td>18566 (4.60%)</td>
+						<td>9314 (63.19%)</td>
+					</tr>
+					<tr>
+						<td><a href="/species/SORBI">Sorghum bicolor</a></td>
+						<td>Sorghum</td>
+						<td>SORBI</td>
+						<td><a href="http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=4558" target="_blank">4558</a></td>
+						<td>23797 (5.90%)</td>
+						<td>11814 (80.15%)</td>
+					</tr>
+					<tr>
+						<td><a href="/species/MAIZE">Zea mays</a></td>
+						<td>Maize</td>
+						<td>MAIZE</td>
+						<td><a href="http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=4577" target="_blank">4577</a></td>
+						<td>24229 (6.01%)</td>
+						<td>11358 (77.06%)</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}
+

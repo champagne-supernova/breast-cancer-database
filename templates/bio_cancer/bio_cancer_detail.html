@@ -1,0 +1,38 @@
+{% extends 'bio_cancer/bio_cancer_base.html' %}
+{% load staticfiles %}
+{% block title %} Cancer {% endblock %}
+{% block content %}
+    <div style = "text-indent: 2em">
+        <h1> {{ sample_id }} </h1>>
+        <table>
+            {% for key, vaule in info.items %}
+            <tr>
+                <th>{{ key }}</th>
+                <td>{{ vaule }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% if analysis %}
+            <h2> Analysis </h2>
+            <table>
+                {% for key, value in analysis.items %}
+                    <tr>
+                        <th>{{ key }}</th>
+                        <td>{{ value }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+        {% if input_files %}
+            <h2> Input files </h2>
+            <table>
+                {% for key, value in input_files.items %}
+                    <tr>
+                        <th>{{ key }}</th>
+                        <td>{{ value }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+    </div>
+{% endblock %}

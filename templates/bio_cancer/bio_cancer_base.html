@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html>
+  
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	{% load staticfiles %} 
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!--<script type="text/javascript" async="" src="{% static 'js/cancer_analytics.js' %}"></script>-->
+    <!--<script async="" src="{% static 'js/cancer_js.js' %}"></script>-->
+    <script>window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'UA-24548737-1');</script>
+    <!--<base href=".">-->
+    <base href=".">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="https://www.cancerimagingarchive.net/nbia-search/assets/images/favicon.ico">
+	<script type="text/javascript" src="{% static 'js/cancer_styles.js' %}"></script> 
+	<script type="text/javascript" src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+	
+	{% block css_js_after %} 
+		<link href="{% static 'bootstrap/css/bootstrap.css' %}" rel="stylesheet">
+		<link href="{% static 'css/cancer_styles.css' %}" rel="stylesheet">	
+	{% endblock %}  
+    
+    <body>
+      <nbia-root _nghost-c0="" ng-version="6.0.2">
+        <router-outlet _ngcontent-c0=""></router-outlet>
+        <nbia-nbia-client _nghost-c2="">
+          <nbia-introduction _ngcontent-c2="" _nghost-c3="">
+            <!--bindings={ "ng-reflect-ng-if": "false" }--></nbia-introduction>
+          <div _ngcontent-c2="" class="main-parent-span" ng-reflect-klass="main-parent-span" ng-reflect-ng-class="[object Object]">
+            <nbia-loading-display _ngcontent-c2="" _nghost-c4="">
+              <div _ngcontent-c4="" class="loading-div hide-item" ng-reflect-klass="loading-div" ng-reflect-ng-class="[object Object]">
+                <img _ngcontent-c4="" alt="Loading" class="loading-img" src="{% static 'images/loading-gears-animation-13.gif' %}">
+                <span _ngcontent-c4="" class="loading-message">
+                  <h2 _ngcontent-c4=""></h2>
+                  <h2 _ngcontent-c4=""></h2>
+                </span>
+              </div>
+            </nbia-loading-display>
+            <nbia-header _ngcontent-c2="" _nghost-c5="">
+              <img _ngcontent-c5="" alt="Logo" class="background-image" src="{% static 'images/cancer_logo.png' %}">
+              <nav _ngcontent-c5="" class=" menu-header">
+                <div _ngcontent-c5="" class="container-fluid">
+                  <!--bindings={ "ng-reflect-ng-if": "true" }-->
+                  <nbia-custom-menu _ngcontent-c5="" _nghost-c9="">
+                    <span _ngcontent-c9="" class="custom-menu-span">
+                      <!--bindings={ "ng-reflect-ng-for-of": "[object Object],[object Object" }-->
+                      <span _ngcontent-c9="">
+                        <!--bindings={ "ng-reflect-ng-if": "true" }-->
+                        <span _ngcontent-c9="" align="left" class="dropdown custom-menu-dropdown-span">
+                          <a _ngcontent-c9="" target="_blank" class="custom-menu-no-dropdown " href="{% url "home_page" %}">Home</a></span>
+                        <!--bindings={ "ng-reflect-ng-if": "false" }--></span>
+                      <span _ngcontent-c9="">
+                        <!--bindings={ "ng-reflect-ng-if": "true" }-->
+                        <span _ngcontent-c9="" align="left" class="dropdown custom-menu-dropdown-span">
+                          <a _ngcontent-c9="" target="_blank" class="custom-menu-no-dropdown " href="http://sklb.seu.edu.cn/">News</a></span>
+                        <!--bindings={ "ng-reflect-ng-if": "false" }--></span>
+                      <span _ngcontent-c9="">
+                        <!--bindings={ "ng-reflect-ng-if": "false" }-->
+                        <!--bindings={ "ng-reflect-ng-if": "true" }-->
+                        <span _ngcontent-c9="" align="left" class="dropdown custom-menu-dropdown-span" dropdown="" onclick="dodajAktywne(this)">
+                          <span _ngcontent-c9="" class="custom-menu-dropdown-button" dropdown-open="">Search
+                            <span _ngcontent-c9="" class="caret"></span></span>
+                          <ul _ngcontent-c9="" class="dropdown-menu custom-menu-dropdown-ul">
+                            <!--bindings={ "ng-reflect-ng-for-of": "[object Object],[object Object" }-->
+                            <li _ngcontent-c9="">
+                              <!--bindings={ "ng-reflect-ng-if": "true" }-->
+                              <a _ngcontent-c9="" target="_blank" class="btn-primary custom-menu-dropdown-li" href={% url "cancer_genomic_page" %}>Genomics</a>
+                              <!--bindings={ "ng-reflect-ng-if": "false" }--></li>
+                            <li _ngcontent-c9="">
+                              <!--bindings={ "ng-reflect-ng-if": "true" }-->
+                              <a _ngcontent-c9="" target="_blank" class="btn-primary custom-menu-dropdown-li" href={% url "cancer_image_page" %}>Images</a>
+                              <!--bindings={ "ng-reflect-ng-if": "false" }--></li>
+                            <!--bindings={ "ng-reflect-ng-if": "false" }--></ul>
+                        </span>
+                      </span>
+                      <span _ngcontent-c9="">
+                        <!--bindings={ "ng-reflect-ng-if": "true" }-->
+                        <span _ngcontent-c9="" align="left" class="dropdown custom-menu-dropdown-span">
+                          <a _ngcontent-c9="" target="_blank" class="custom-menu-no-dropdown " href="/cancer/about">About</a></span>
+                        <!--bindings={ "ng-reflect-ng-if": "false" }--></span>
+                      <span _ngcontent-c9="">
+                        <!--bindings={ "ng-reflect-ng-if": "true" }-->
+                        <span _ngcontent-c9="" align="left" class="dropdown custom-menu-dropdown-span">
+                          <a _ngcontent-c9="" target="_blank" class="custom-menu-no-dropdown " href="/cancer/contact">Contact</a></span>
+                        <!--bindings={ "ng-reflect-ng-if": "false" }--></span>
+                      
+                    
+                      
+                    </span>
+                  </nbia-custom-menu>
+                  <nbia-application-menu _ngcontent-c5="" _nghost-c10="">
+                    <span _ngcontent-c10="" class="application-menu-span">
+                      <span _ngcontent-c10="" class="application-menu-item application-menu-current-item" ng-reflect-klass="application-menu-item" ng-reflect-ng-class="[object Object]">
+                        <span _ngcontent-c10="" class="glyphicon glyphicon-search"></span>Search</span>
+                      <span _ngcontent-c10="" class="application-menu-item" ng-reflect-klass="application-menu-item" ng-reflect-ng-class="[object Object]">
+                        <span _ngcontent-c10="" class="glyphicon glyphicon-log-in"></span>&nbspLogin</span>
+                      <span _ngcontent-c10="" class="application-menu-item application-menu-disabled-item" ng-reflect-klass="application-menu-item" ng-reflect-ng-class="[object Object]">
+                        <span _ngcontent-c10="" class="glyphicon glyphicon-download-alt"></span>Download</span>
+                      <span _ngcontent-c10="" class="application-menu-item" dropdown="" dropdown-open="" ng-reflect-klass="application-menu-item" ng-reflect-ng-class="[object Object]" ng-reflect-toggle-click="true">
+                        <span _ngcontent-c10="" class="glyphicon glyphicon-export"></span>&nbsp;Share
+                        <!--bindings={ "ng-reflect-ng-if": "true" }-->
+                        <ul _ngcontent-c10="" class="dropdown-menu application-menu-dropdown-menu" role="menu">
+                          <li _ngcontent-c10="" class="application-menu-dropdown-menu-item hide-item" ng-reflect-klass="application-menu-dropdown-menu" ng-reflect-ng-class="[object Object]">Share my Cart</li>
+                          <li _ngcontent-c10="" class="application-menu-dropdown-menu-item" ng-reflect-klass="application-menu-dropdown-menu" ng-reflect-ng-class="[object Object]">Share my query</li></ul>
+                      </span>
+                      <span _ngcontent-c10="" class="application-menu-item application-menu-disabled-item" ng-reflect-klass="application-menu-item" ng-reflect-ng-class="[object Object]" title="0 Series">
+                        <span _ngcontent-c10="" class="glyphicon glyphicon-shopping-cart"></span>Cart
+                        <span _ngcontent-c10="" class="cart-count cart-count-zero" ng-reflect-klass="cart-count" ng-reflect-ng-class="[object Object]">
+                          <!--bindings={ "ng-reflect-ng-if": "false" }-->
+                          <!--bindings={ "ng-reflect-ng-if": "true" }-->
+                          <span _ngcontent-c10="" class="data-size">0 MB</span></span>
+                      </span>
+                    </span>
+                  </nbia-application-menu>
+                  <nbia-downloader-download _ngcontent-c5="" _nghost-c11="">
+                    <!--bindings={ "ng-reflect-ng-if": "false" }--></nbia-downloader-download>
+                  <nbia-missing-criteria _ngcontent-c5="" _nghost-c12="">
+                    <!--bindings={ "ng-reflect-ng-if": "false" }--></nbia-missing-criteria>
+                </div>
+              </nav>
+              <nbia-query-url _ngcontent-c5="" _nghost-c13="">
+                <!--bindings={ "ng-reflect-ng-if": "false" }--></nbia-query-url>
+              <nbia-save-cart _ngcontent-c5="" _nghost-c14="">
+                <!--bindings={ "ng-reflect-ng-if": "false" }--></nbia-save-cart>
+              <nbia-alert-box _ngcontent-c5="" _nghost-c15="">
+                <!--bindings={ "ng-reflect-ng-if": "false" }--></nbia-alert-box>
+            </nbia-header>
+{% block content %}
+{% endblock %}
+		<nbia-footer _ngcontent-c0="">
+          <span>
+            <div class="footer-div" id='foot-style'>
+			  <br></br><br></br>
+              <span class="footer-item footer-text-color" >(c) Southeast University Bioinfomatics (2019) </span>
+
+            </div>
+          </span>
+        </nbia-footer>
+      </nbia-root>
+    </body>
+	<script type="text/javascript">
+		var checkBoxes = {{ checkNames |safe }};
+		for (i in checkBoxes) {
+			var ele = document.getElementsByName(checkBoxes[i])[0];
+			if (ele.checked == false) {
+				ele.checked = true;
+			}
+		}	
+	</script>
+</html>

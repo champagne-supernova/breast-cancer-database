@@ -1,0 +1,740 @@
+{% extends 'bio_cancer/bio_cancer_base.html' %}
+{% load staticfiles %}
+{% block title %} Cancer {% endblock %}
+{% block content %}
+	<nbia-image-search _ngcontent-c2="" _nghost-c6="" ng-reflect-ng-class="[object Object]">
+	  <div _ngcontent-c6="" class="image-search">
+		<div _ngcontent-c6="" class="query-section query-section-show" ng-reflect-klass="query-section" ng-reflect-ng-class="[object Object]">
+		  <nbia-query-section _ngcontent-c6="" _nghost-c16="">
+			<!--bindings={ "ng-reflect-ng-if": "false" }-->
+			<div _ngcontent-c16="" class="query-section" ng-reflect-klass="query-section" ng-reflect-ng-class="[object Object]">
+			  <nbia-query-section-tabs _ngcontent-c16="" _nghost-c22="">
+				<div _ngcontent-c22="" class="tab-div">
+				  <tabset _ngcontent-c22="" >
+					<div class="tabset" style="width: 280px;">
+					  <ul class="nav nav-tabs" ng-reflect-klass="nav" ng-reflect-ng-class="[object Object]">
+						<!--bindings={ "ng-reflect-ng-for-of": "[object Object],[object Object" }-->
+						<li role="presentation" class="active">
+						  <a class="btn">
+							<span ng-reflect-tab-transclude="[object Object]"></span>
+							<span _ngcontent-c22="" class="tab-text-span">Simple Search</span></a>
+						</li>
+						<li role="presentation">
+						  <a class="btn">
+							<span ng-reflect-tab-transclude="[object Object]"></span>
+							<span _ngcontent-c22="" class="tab-text-span">Text Search</span></a>
+						</li>
+					  </ul>
+					  <div class="tabset-content">
+						<tab _ngcontent-c22="" ng-reflect-active="true">
+						  <!--bindings={ "ng-reflect-ng-if": "true" }-->
+						  <!---->
+						  <nbia-simple-search _ngcontent-c22="" _nghost-c27="">
+							<div _ngcontent-c27="">
+							  <nbia-collection-query _ngcontent-c27="" _nghost-c32="">
+								<nbia-tool-tip _ngcontent-c32="" _nghost-c38="" ng-reflect-tool-tip-y="221" ng-reflect-tool-tip-text="" ng-reflect-tool-tip-heading="TCGA-BRCA" ng-reflect-show-tool-tip="false">
+								  <span _ngcontent-c38="" class="toolTip step" ng-reflect-klass="toolTip step" ng-reflect-ng-class="[object Object]" ng-reflect-ng-style="[object Object]" style="top: 231px;">
+									<div _ngcontent-c38="">
+									  <b _ngcontent-c38="">TCGA-BRCA</b></div>
+									<span _ngcontent-c38=""></span>
+								  </span>
+								</nbia-tool-tip>
+								<div _ngcontent-c32="" class="query-panel">
+								  <div _ngcontent-c32="" class="query-panel-heading">
+									<!--bindings={ "ng-reflect-ng-if": "true" }-->
+									<span _ngcontent-c32="" class="clicker">
+									  <img _ngcontent-c32="" src="{% static 'images/down_V01.png' %}">&nbspImaging Modality</span>
+									<!--bindings={ "ng-reflect-ng-if": "false" }-->
+									<!--bindings={ "ng-reflect-ng-if": "true" }-->
+									<label _ngcontent-c32="" class="red-clear">
+									  <img _ngcontent-c32="" alt="Search" class=" clicker" src="{% static 'images/redClear.png' %}"></label>
+								  </div>
+								  <div _ngcontent-c32="" class="" ng-reflect-ng-class="[object Object]">
+									<!--bindings={ "ng-reflect-ng-if": "false" }-->
+									<!--bindings={ "ng-reflect-ng-for-of": "[object Object],[object Object" }-->
+									<div _ngcontent-c32="" class="query-panel-checkboxes">
+									  <!--bindings={ "ng-reflect-ng-if": "true" }-->
+									  <span _ngcontent-c32="">
+										<span _ngcontent-c32="">
+										  <input _ngcontent-c32="" class="check-box ng-untouched ng-pristine ng-valid" type="checkbox" ng-reflect-model="true" id="checkbox-collection0">
+										  <label _ngcontent-c32="" for="checkbox-collection0">MR</label></span>
+										<span _ngcontent-c32="" class="count-box" ng-reflect-ng-class="[object Object]">139</span></span>
+									</div>
+									<div _ngcontent-c32="" class="query-panel-checkboxes">
+									  <!--bindings={ "ng-reflect-ng-if": "true" }-->
+									  <span _ngcontent-c32="">
+										<span _ngcontent-c32="">
+										  <input _ngcontent-c32="" class="check-box ng-untouched ng-pristine ng-valid" type="checkbox" ng-reflect-model="false" id="checkbox-collection1">
+										  <label _ngcontent-c32="" for="checkbox-collection1">MG</label></span>
+										<span _ngcontent-c32="" class="count-box_zero" ng-reflect-ng-class="[object Object]">0</span></span>
+									</div>
+							  
+								  </div>
+								</div>
+							  </nbia-collection-query>
+							  <nbia-image-modality-query _ngcontent-c27="" _nghost-c33="">
+								<nbia-tool-tip _ngcontent-c33="" _nghost-c38="" ng-reflect-tool-tip-y="0" ng-reflect-tool-tip-text="" ng-reflect-tool-tip-heading="" ng-reflect-show-tool-tip="false">
+								  <span _ngcontent-c38="" class="toolTip step" ng-reflect-klass="toolTip step" ng-reflect-ng-class="[object Object]" ng-reflect-ng-style="[object Object]" style="top: 10px;">
+									<div _ngcontent-c38="">
+									  <b _ngcontent-c38=""></b>
+									</div>
+									<span _ngcontent-c38=""></span>
+								  </span>
+								</nbia-tool-tip>
+								<div _ngcontent-c33="" class="query-panel">
+								  <div _ngcontent-c33="" class="query-panel-heading">
+									<!--bindings={ "ng-reflect-ng-if": "true" }-->
+									<span _ngcontent-c33="" class="clicker">
+									  <img _ngcontent-c33="" src="{% static 'images/down_V01.png' %}">&nbspManufacturer</span>                                          
+									<!--bindings={ "ng-reflect-ng-if": "false" }--></div>
+								  <div _ngcontent-c33="" class="" ng-reflect-ng-class="[object Object]">
+									<!--bindings={ "ng-reflect-ng-if": "false" }-->
+									<!--bindings={ "ng-reflect-ng-for-of": "[object Object],[object Object" }-->
+									<div _ngcontent-c33="" class="query-panel-checkboxes">
+									  <!--bindings={ "ng-reflect-ng-if": "true" }-->
+									  <span _ngcontent-c33="">
+										<span _ngcontent-c33="">
+										  <input _ngcontent-c33="" class="check-box ng-untouched ng-pristine ng-valid" type="checkbox" ng-reflect-model="false" id="checkbox-image-modality0">
+										  <label _ngcontent-c33="" for="checkbox-image-modality0">GE MEDICAL SYSTEMS</label></span>
+										<span _ngcontent-c33="" class="count-box" ng-reflect-ng-class="[object Object]">137</span></span>
+									</div>
+									<div _ngcontent-c33="" class="query-panel-checkboxes">
+									  <!--bindings={ "ng-reflect-ng-if": "true" }-->
+									  <span _ngcontent-c33="">
+										<span _ngcontent-c33="">
+										  <input _ngcontent-c33="" class="check-box ng-untouched ng-pristine ng-valid" type="checkbox" ng-reflect-model="false" id="checkbox-image-modality1">
+										  <label _ngcontent-c33="" for="checkbox-image-modality1">SIEMENS</label></span>
+										<span _ngcontent-c33="" class="count-box" ng-reflect-ng-class="[object Object]">5</span></span>
+									</div>
+									
+								  </div>
+								</div>
+							  </nbia-image-modality-query>
+
+							</div>
+						  </nbia-simple-search>
+						  <!----></tab>
+						<tab _ngcontent-c22="" ng-reflect-active="false">
+						  <!--bindings={ "ng-reflect-ng-if": "false" }--></tab>
+						<!--bindings={ "ng-reflect-ng-if": "false" }-->
+						<!--bindings={ "ng-reflect-ng-if": "false" }-->
+						<!--bindings={ "ng-reflect-ng-if": "false" }--></div>
+					</div>
+				  </tabset>
+				</div>
+			  </nbia-query-section-tabs>
+			</div>
+		  </nbia-query-section>
+		</div>
+		<div _ngcontent-c6="" class="data-section">
+		  <nbia-data-section _ngcontent-c6="" _nghost-c17="">
+			<div _ngcontent-c17="" ng-reflect-ng-class="[object Object]">
+			  <nbia-display-query-simple-search _ngcontent-c17="" _nghost-c23="" ng-reflect-ng-class="[object Object]">
+				<div _ngcontent-c23="" class="alert alert-info display-query display-wrap">
+				  <button _ngcontent-c23="" class="btn btn-default no-outline" title="Clear query" id="clearButton" onclick="clearSelected(this)">
+					<img _ngcontent-c23="" src="{% static 'images/clear-icon1.png' %}">Clear</button>
+				  <span _ngcontent-c23="" class="display-on-top">
+					<!--bindings={ "ng-reflect-ng-if": "false" }-->
+					<!--bindings={ "ng-reflect-ng-for-of": "collections,TCGA-BRCA" }-->
+					<span _ngcontent-c23="">
+					  <!--bindings={ "ng-reflect-ng-if": "false" }-->
+					  <!--bindings={ "ng-reflect-ng-for-of": "collections,TCGA-BRCA" }-->
+					  <span _ngcontent-c23="">
+						<!--bindings={ "ng-reflect-ng-if": "true" }-->
+						<span _ngcontent-c23="" class="label label-default criteria-display criteria-display-title display-wrap">Collections</span>
+						<!--bindings={ "ng-reflect-ng-if": "false" }-->
+						<!--bindings={ "ng-reflect-ng-if": "false" }-->
+						<!--bindings={ "ng-reflect-ng-if": "false" }-->
+						<!--bindings={ "ng-reflect-ng-if": "false" }--></span>
+					  <span _ngcontent-c23="">
+						<!--bindings={ "ng-reflect-ng-if": "false" }-->
+						<!--bindings={ "ng-reflect-ng-if": "true" }-->
+						<span _ngcontent-c23="" class="display-wrap">(&nbsp;</span>
+						<!--bindings={ "ng-reflect-ng-if": "false" }-->
+						<!--bindings={ "ng-reflect-ng-if": "true" }-->
+						<span _ngcontent-c23="" class="label label-default criteria-display criteria-display-name display-wrap">TCGA-BRCA</span>
+						<!--bindings={ "ng-reflect-ng-if": "true" }-->
+						<span _ngcontent-c23="" class="display-wrap">&nbsp;)</span></span>
+					</span>
+				  </span>
+				</div>
+			  </nbia-display-query-simple-search>
+			  <nbia-display-query-criteria-search _ngcontent-c17="" _nghost-c24="" class="hide-item" ng-reflect-ng-class="[object Object]">
+				<div _ngcontent-c24="" class="alert alert-info display-query">
+				  <button _ngcontent-c24="" class="btn btn-default" title="Clear query">
+					<img _ngcontent-c24="" src="{% static 'images/clear-icon1.png' %}">Clear</button>
+				  <!--bindings={ "ng-reflect-ng-for-of": "" }--></div>
+			  </nbia-display-query-criteria-search>
+			  <nbia-display-query-text-search _ngcontent-c17="" _nghost-c25="" class="hide-item" ng-reflect-ng-class="[object Object]">
+				<div _ngcontent-c25="" class="alert alert-info display-query">
+				  <button _ngcontent-c25="" class="btn btn-default no-outline" title="Clear query">
+					<img _ngcontent-c25="" src="{% static 'images/clear-icon1.png' %}">Clear</button></div>
+			  </nbia-display-query-text-search>
+			  <nbia-data-section-tabs _ngcontent-c17="" _nghost-c26="" ng-reflect-display-type="getSimpleSearchWithModalityAnd">
+				<div _ngcontent-c26="" class="tab-div">
+				  <tabset _ngcontent-c26="">
+					<div class="tabset">
+					  <ul class="nav nav-tabs" ng-reflect-klass="nav" ng-reflect-ng-class="[object Object]">
+						<!--bindings={ "ng-reflect-ng-for-of": "[object Object],[object Object" }-->
+						<li role="presentation" class="">
+						  <a class="btn">
+							<span ng-reflect-tab-transclude="[object Object]"></span>
+							<span _ngcontent-c26="">Summary</span></a>
+						</li>
+						<li role="presentation" class="active">
+						  <a class="btn">
+							<span ng-reflect-tab-transclude="[object Object]"></span>
+							<span _ngcontent-c26="">Search Results</span></a>
+						</li>
+					  </ul>
+					  <div class="tabset-content">
+						<!--bindings={ "ng-reflect-ng-if": "true" }-->
+						<tab _ngcontent-c26="" ng-reflect-active="true" ng-reflect-disabled="false">
+						  <!--bindings={ "ng-reflect-ng-if": "true" }-->
+						  <!---->
+						  <nbia-summary _ngcontent-c26="" _nghost-c39="">
+							<div _ngcontent-c39="" class="container-fluid summary-main-panel ">
+							  <div _ngcontent-c39="" class="row">
+								<div _ngcontent-c39="" class="main-panel-heading">
+								  <!--bindings={ "ng-reflect-ng-if": "true" }-->
+								  <span _ngcontent-c39="" class="label label-default" style=" background-color: #0d95a1;">Search results count:
+									<span _ngcontent-c39="">139</span></span>
+								</div>
+							  </div>
+							  <div _ngcontent-c39="" class="row chart-row">
+								<div _ngcontent-c39="" class="col-sm-4 chart-col-left">
+								  <nbia-pie-chart-collections _ngcontent-c39="" _nghost-c47="">
+									<nbia-description-popup _ngcontent-c47="" _nghost-c50="" ng-reflect-show-modality-description="false" ng-reflect-width="224" ng-reflect-chart-type="Collection" ng-reflect-description-popup-y="64" ng-reflect-description-popup-text="" ng-reflect-description-popup-heading="" ng-reflect-description-scroll="true">
+									  <span _ngcontent-c50="" class="descriptionPopup step" ng-reflect-klass="descriptionPopup step" ng-reflect-ng-class="[object Object]" ng-reflect-ng-style="[object Object]" style="top: 64px;">
+										<div _ngcontent-c50="">
+										  <b _ngcontent-c50=""></b>
+										  <span _ngcontent-c50="" class="glyphicon glyphicon-remove close-x clicker"></span>
+										  <div _ngcontent-c50="" class="descriptionTextDiv1 descriptionTextDiv" ng-reflect-klass="descriptionTextDiv1" ng-reflect-ng-class="[object Object]" ng-reflect-ng-style="[object Object]" style="width: 224px;"></div>
+										</div>
+									  </span>
+									</nbia-description-popup>
+									<div _ngcontent-c47="" class="chart00">
+									  <div _ngcontent-c47="" class="chart-header">Count by Collections</div>
+									  <div _ngcontent-c47="" class="chart-svg-div">
+										<svg _ngcontent-c47="" class="pie-svg" id="pie-collections" ngDefaultControl="" ng-reflect-klass="pie-svg" ng-reflect-ng-class="[object Object]" width="180" height="180">
+										  <svg width="180" height="180">
+											<g transform="translate(90,90)">
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											</g>
+										  </svg>
+										  <svg width="180" height="180">
+											<g transform="translate(90,90)">
+											  <g>
+												<path d="M4.898587196589413e-15,-80A80,80,0,1,1,-4.898587196589413e-15,80A80,80,0,1,1,4.898587196589413e-15,-80Z" id="path-collections0" style="fill: rgb(31, 119, 180);"></path>
+											  </g>
+											</g>
+										  </svg>
+										</svg>
+									  </div>
+									  <div _ngcontent-c47="" class="chart-footer">1 Collection</div></div>
+								  </nbia-pie-chart-collections>
+								</div>
+								<div _ngcontent-c39="" class="col-sm-4 chart-col-center">
+								  <nbia-pie-chart-image-modality _ngcontent-c39="" _nghost-c48="">
+									<nbia-description-popup _ngcontent-c48="" _nghost-c50="" ng-reflect-show-modality-description="false" ng-reflect-chart-type="Modality" ng-reflect-description-popup-y="64" ng-reflect-description-popup-text="" ng-reflect-description-popup-heading="" ng-reflect-description-scroll="false">
+									  <span _ngcontent-c50="" class="descriptionPopup step" ng-reflect-klass="descriptionPopup step" ng-reflect-ng-class="[object Object]" ng-reflect-ng-style="[object Object]" style="top: 64px;">
+										<div _ngcontent-c50="">
+										  <b _ngcontent-c50=""></b>
+										  <span _ngcontent-c50="" class="glyphicon glyphicon-remove close-x clicker"></span>
+										  <div _ngcontent-c50="" class="descriptionTextDiv1" ng-reflect-klass="descriptionTextDiv1" ng-reflect-ng-class="[object Object]" ng-reflect-ng-style="[object Object]" style="width: 200px;"></div>
+										</div>
+									  </span>
+									</nbia-description-popup>
+									<div _ngcontent-c48="" class="chart00">
+									  <div _ngcontent-c48="" class="chart-header">Count by Image Modality</div>
+									  <div _ngcontent-c48="" class="chart-svg-div">
+										<svg _ngcontent-c48="" class="pie-svg" id="pie-image-modality" ngDefaultControl="" ng-reflect-klass="pie-svg" ng-reflect-ng-class="[object Object]" width="180" height="180">
+										  <svg width="180" height="180">
+											<g transform="translate(90,90)">
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											</g>
+										  </svg>
+										  <svg width="180" height="180">
+											<g transform="translate(90,90)">
+											  <g>
+												<path d="M4.898587196589413e-15,-80A80,80,0,1,1,-17.555081075316878,-78.05010652420053L0,0Z" id="path-image-modality0" style="fill: rgb(31, 119, 180); cursor: pointer;"></path>
+											  </g>
+											  <g>
+												<path d="M-17.555081075316878,-78.05010652420053A80,80,0,0,1,-1.4695761589768237e-14,-80L0,0Z" id="path-image-modality1" style="fill: rgb(174, 199, 232);"></path>
+											  </g>
+											</g>
+										  </svg>
+										</svg>
+									  </div>
+									  <div _ngcontent-c48="" class="chart-footer">2 Image Modalities</div></div>
+								  </nbia-pie-chart-image-modality>
+								</div>
+								<div _ngcontent-c39="" class="col-sm-4 chart-col-right">
+								  <nbia-pie-chart-anatomical-site _ngcontent-c39="" _nghost-c49="">
+									<div _ngcontent-c49="" class="chart00">
+									  <div _ngcontent-c49="" class="chart-header">Count by Anatomical Sites</div>
+									  <div _ngcontent-c49="" class="chart-svg-div">
+										<svg _ngcontent-c49="" class="pie-svg" id="pie-anatomical-site" ng-reflect-klass="pie-svg" ng-reflect-ng-class="[object Object]" width="180" height="180">
+										  <svg width="180" height="180">
+											<g transform="translate(90,90)">
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											  <g>
+											  </g>
+											</g>
+										  </svg>
+										  <svg width="180" height="180">
+											<g transform="translate(90,90)">
+											  <g>
+												<path d="M4.898587196589413e-15,-80A80,80,0,1,1,-4.898587196589413e-15,80A80,80,0,1,1,4.898587196589413e-15,-80Z" id="path-anatomical-site0" style="fill: rgb(31, 119, 180);"></path>
+											  </g>
+											</g>
+										  </svg>
+										</svg>
+									  </div>
+									  <div _ngcontent-c49="" class="chart-footer">1 Anatomical Site</div></div>
+								  </nbia-pie-chart-anatomical-site>
+								</div>
+							  </div>
+							</div>
+						  </nbia-summary>
+						  <!----></tab>
+						<tab _ngcontent-c26="" ng-reflect-active="false">
+						  <!--bindings={ "ng-reflect-ng-if": "false" }--></tab>
+						<!--bindings={ "ng-reflect-ng-if": "false" }--></div>
+					</div>
+				  </tabset>
+				</div>
+			  </nbia-data-section-tabs>
+			</div>
+		  </nbia-data-section>
+		</div>
+	  </div>
+	</nbia-image-search>
+	<nbia-login _ngcontent-c2="" _nghost-c7="" class="hide-item" ng-reflect-ng-class="[object Object]">
+	  <div _ngcontent-c7="" class="panel panel-info login-box alert-box-div alert-box-shadow">
+		<div _ngcontent-c7="" class="panel-heading">
+		  <div _ngcontent-c7="" class="panel-title">Login</div></div>
+		<div _ngcontent-c7="" class="panel-body" style="padding-top:30px">
+		  <form _ngcontent-c7="" class="form-horizontal login-form ng-untouched ng-pristine ng-invalid" novalidate="">
+			<div _ngcontent-c7="" class="input-group" style="margin-bottom: 25px">
+			  <span _ngcontent-c7="" class="input-group-addon">
+				<span _ngcontent-c7="" class="glyphicon glyphicon-user"></span>
+			  </span>
+			  <input _ngcontent-c7="" class="form-control ng-untouched ng-pristine ng-invalid" id="username" name="username" ngmodel="" placeholder="User name" required="" type="text" ng-reflect-required="" ng-reflect-name="username" ng-reflect-model=""></div>
+			<span _ngcontent-c7="" class="input-group">
+			  <span _ngcontent-c7="" class="input-group-addon">
+				<span _ngcontent-c7="" class="glyphicon glyphicon-lock"></span>
+			  </span>
+			  <input _ngcontent-c7="" class="form-control ng-untouched ng-pristine ng-invalid" id="password" name="password" ngmodel="" placeholder="Password" required="" type="password" ng-reflect-required="" ng-reflect-name="password" ng-reflect-model=""></span>
+			<span _ngcontent-c7="" class="form-group login-button">
+			  <button _ngcontent-c7="" class="btn login-button" type="submit" ng-reflect-klass="btn login-button" ng-reflect-ng-class="[object Object]" disabled="">Log in</button>
+			  <!--bindings={ "ng-reflect-ng-if": "false" }-->
+			  <span _ngcontent-c7="" class="account-buttons">
+				<!--bindings={ "ng-reflect-ng-if": "true" }-->
+				<a _ngcontent-c7="" target="_blank" href="https://public.cancerimagingarchive.net/ncia/legalRules.jsf">
+				  <button _ngcontent-c7="" class="btn btn-primary" type="button">New account</button></a>
+				<!--bindings={ "ng-reflect-ng-if": "true" }-->
+				<a _ngcontent-c7="" target="_blank" class="account-help-button" href="https://public.cancerimagingarchive.net/ncia/accountSupport.jsf">
+				  <button _ngcontent-c7="" class="btn btn-primary" type="button">Account help</button></a>
+			  </span>
+			</span>
+		  </form>
+		</div>
+	  </div>
+	</nbia-login>
+	<nbia-cart _ngcontent-c2="" _nghost-c8="" class="hide-item" ng-reflect-ng-class="[object Object]">
+	  <!--bindings={ "ng-reflect-ng-if": "false" }-->
+	  <!--bindings={ "ng-reflect-ng-if": "true" }-->
+	  <div _ngcontent-c8="" class="cart-list-div">
+		<!--bindings={ "ng-reflect-ng-if": "false" }-->
+		<!--bindings={ "ng-reflect-ng-if": "false" }-->
+		<table _ngcontent-c8="" class="cart-list-table">
+		  <tbody _ngcontent-c8="">
+			<tr _ngcontent-c8="">
+			  <!--bindings={ "ng-reflect-ng-for-of": "X,Subject ID,Study UID,Study D" }-->
+			  <td _ngcontent-c8="" class="thead-td" ng-reflect-klass="thead-td" ng-reflect-ng-class="[object Object]">
+				<!--bindings={ "ng-reflect-ng-if": "false" }-->
+				<!--bindings={ "ng-reflect-ng-if": "true" }-->
+				<nbia-cart-delete _ngcontent-c8="" _nghost-c19="">
+				  <span _ngcontent-c19="" class="clicker cart-delete-button" title="Delete Cart contents">
+					<img _ngcontent-c19="" src="{% static 'images/cartDelete_02.png' %}"></span>
+				</nbia-cart-delete>
+			  </td>
+			  <td _ngcontent-c8="" class="thead-td" ng-reflect-klass="thead-td" ng-reflect-ng-class="[object Object]">
+				<!--bindings={ "ng-reflect-ng-if": "true" }-->
+				<span _ngcontent-c8="">
+				  <span _ngcontent-c8="" class="clicker" title="Click to sort">Subject ID
+					<!--bindings={ "ng-reflect-ng-if": "false" }-->
+					<!--bindings={ "ng-reflect-ng-if": "false" }-->
+					<!--bindings={ "ng-reflect-ng-if": "true" }-->
+					<img _ngcontent-c8="" class="sort-pointer" src="{% static 'images/emptyTriangle2.png' %}"></span></span>
+				<!--bindings={ "ng-reflect-ng-if": "false" }--></td>
+			  <td _ngcontent-c8="" class="thead-td hide-item" ng-reflect-klass="thead-td" ng-reflect-ng-class="[object Object]">
+				<!--bindings={ "ng-reflect-ng-if": "true" }-->
+				<span _ngcontent-c8="">
+				  <span _ngcontent-c8="" class="clicker" title="Click to sort">Study UID
+					<!--bindings={ "ng-reflect-ng-if": "true" }-->
+					<img _ngcontent-c8="" class="sort-pointer" src="{% static 'images/upTriangle2.png' %}">
+					<!--bindings={ "ng-reflect-ng-if": "false" }-->
+					<!--bindings={ "ng-reflect-ng-if": "false" }--></span></span>
+				<!--bindings={ "ng-reflect-ng-if": "false" }--></td>
+			  <td _ngcontent-c8="" class="thead-td" ng-reflect-klass="thead-td" ng-reflect-ng-class="[object Object]">
+				<!--bindings={ "ng-reflect-ng-if": "true" }-->
+				<span _ngcontent-c8="">
+				  <span _ngcontent-c8="" class="clicker" title="Click to sort">Study Date
+					<!--bindings={ "ng-reflect-ng-if": "false" }-->
+					<!--bindings={ "ng-reflect-ng-if": "false" }-->
+					<!--bindings={ "ng-reflect-ng-if": "true" }-->
+					<img _ngcontent-c8="" class="sort-pointer" src="{% static 'images/emptyTriangle2.png' %}"></span></span>
+				<!--bindings={ "ng-reflect-ng-if": "false" }--></td>
+			  <td _ngcontent-c8="" class="thead-td" ng-reflect-klass="thead-td" ng-reflect-ng-class="[object Object]">
+				<!--bindings={ "ng-reflect-ng-if": "true" }-->
+				<span _ngcontent-c8="">
+				  <span _ngcontent-c8="" class="clicker" title="Click to sort">Study Description
+					<!--bindings={ "ng-reflect-ng-if": "false" }-->
+					<!--bindings={ "ng-reflect-ng-if": "false" }-->
+					<!--bindings={ "ng-reflect-ng-if": "true" }-->
+					<img _ngcontent-c8="" class="sort-pointer" src="{% static 'images/emptyTriangle2.png' %}"></span></span>
+				<!--bindings={ "ng-reflect-ng-if": "false" }--></td>
+			  <td _ngcontent-c8="" class="thead-td hide-item" ng-reflect-klass="thead-td" ng-reflect-ng-class="[object Object]">
+				<!--bindings={ "ng-reflect-ng-if": "true" }-->
+				<span _ngcontent-c8="">
+				  <span _ngcontent-c8="" class="clicker" title="Click to sort">Series ID
+					<!--bindings={ "ng-reflect-ng-if": "false" }-->
+					<!--bindings={ "ng-reflect-ng-if": "false" }-->
+					<!--bindings={ "ng-reflect-ng-if": "true" }-->
+					<img _ngcontent-c8="" class="sort-pointer" src="{% static 'images/emptyTriangle2.png' %}"></span></span>
+				<!--bindings={ "ng-reflect-ng-if": "false" }--></td>
+			  <td _ngcontent-c8="" class="thead-td" ng-reflect-klass="thead-td" ng-reflect-ng-class="[object Object]">
+				<!--bindings={ "ng-reflect-ng-if": "true" }-->
+				<span _ngcontent-c8="">
+				  <span _ngcontent-c8="" class="clicker" title="Click to sort">Series Description
+					<!--bindings={ "ng-reflect-ng-if": "false" }-->
+					<!--bindings={ "ng-reflect-ng-if": "false" }-->
+					<!--bindings={ "ng-reflect-ng-if": "true" }-->
+					<img _ngcontent-c8="" class="sort-pointer" src="{% static 'images/emptyTriangle2.png' %}"></span></span>
+				<!--bindings={ "ng-reflect-ng-if": "false" }--></td>
+			  <td _ngcontent-c8="" class="thead-td" ng-reflect-klass="thead-td" ng-reflect-ng-class="[object Object]">
+				<!--bindings={ "ng-reflect-ng-if": "true" }-->
+				<span _ngcontent-c8="">
+				  <span _ngcontent-c8="" class="clicker" title="Click to sort">Images
+					<!--bindings={ "ng-reflect-ng-if": "false" }-->
+					<!--bindings={ "ng-reflect-ng-if": "false" }-->
+					<!--bindings={ "ng-reflect-ng-if": "true" }-->
+					<img _ngcontent-c8="" class="sort-pointer" src="{% static 'images/emptyTriangle2.png' %}"></span></span>
+				<!--bindings={ "ng-reflect-ng-if": "false" }--></td>
+			  <td _ngcontent-c8="" class="thead-td hide-item" ng-reflect-klass="thead-td" ng-reflect-ng-class="[object Object]">
+				<!--bindings={ "ng-reflect-ng-if": "true" }-->
+				<span _ngcontent-c8="">
+				  <span _ngcontent-c8="" class="clicker" title="Click to sort">File Size
+					<!--bindings={ "ng-reflect-ng-if": "false" }-->
+					<!--bindings={ "ng-reflect-ng-if": "false" }-->
+					<!--bindings={ "ng-reflect-ng-if": "true" }-->
+					<img _ngcontent-c8="" class="sort-pointer" src="{% static 'images/emptyTriangle2.png' %}"></span></span>
+				<!--bindings={ "ng-reflect-ng-if": "false" }--></td>
+			  <td _ngcontent-c8="" class="thead-td hide-item" ng-reflect-klass="thead-td" ng-reflect-ng-class="[object Object]">
+				<!--bindings={ "ng-reflect-ng-if": "true" }-->
+				<span _ngcontent-c8="">
+				  <span _ngcontent-c8="" class="clicker" title="Click to sort">Annotation File Size
+					<!--bindings={ "ng-reflect-ng-if": "false" }-->
+					<!--bindings={ "ng-reflect-ng-if": "false" }-->
+					<!--bindings={ "ng-reflect-ng-if": "true" }-->
+					<img _ngcontent-c8="" class="sort-pointer" src="{% static 'images/emptyTriangle2.png' %}"></span></span>
+				<!--bindings={ "ng-reflect-ng-if": "false" }--></td>
+			</tr>
+			<!--bindings={ "ng-reflect-ng-for-of": "" }--></tbody>
+		</table>
+		<div _ngcontent-c8="" class="cart-footer">
+		  <nbia-results-per-page _ngcontent-c8="" class="cart-per-page" _nghost-c20="" ng-reflect-display-data-type="1">
+			<span _ngcontent-c20="" class="footer-colors">Show
+			  <span _ngcontent-c20="" class="btn-group clicker">
+				<input _ngcontent-c20="" class="number-spinner rows-per-page-spinner ng-untouched ng-pristine ng-valid" min="1" type="number" ng-reflect-model="10"></span>entries</span></nbia-results-per-page>
+		  <nbia-search-results-pager _ngcontent-c8="" class="cart-pager" _nghost-c21="" ng-reflect-display-data-type="1" ng-reflect-is-top-pager="true">
+			<!--bindings={ "ng-reflect-ng-if": "false" }--></nbia-search-results-pager>
+		</div>
+	  </div>
+	</nbia-cart>
+  </div>
+</nbia-nbia-client>
+{% endblock %}

@@ -1,0 +1,107 @@
+{% extends 'bio_expr/bio_expr.base.html' %}
+{% load staticfiles %}
+{% block title %} Honor Expression Database {% endblock %}
+{% block css_js_after %}
+<link href="{% static 'css/galym_max.css' %}" rel="stylesheet">
+<script type="text/javascript"  src="{% static 'plugins/jquery-2.2.4.min.js' %}"></script>
+<script type="text/javascript"  src="{% static 'plugins/pic.js' %}"></script>
+{% endblock %}
+{% block content %}
+<div class="container">
+	<div class="panel panel-default" id="panel_id1">
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-md-7">
+					<h4>Introduction</h4>
+						<p class="text-justify" style="font-size: 16px">
+							Soybean Expression Database (SED) is a repository of gene expression profiles derived entirely from
+							RNA-Seq data analysis on tissues spanning an entire range of soybean growth stages and covering a
+							wide variety of biotic and abiotic treatments.
+						</p>
+						<p class="text-justify" style="font-size:16px">
+							SED features integration and visualization of gene expression profiles based on curated and
+							quality-controlled RNA-Seq data encompassing diverse tissues and treatments.
+						</p>
+						<p class='text-justify' style="font-size:16px">
+							SED is a sub-project of <a href="http://192.168.0.100:5000/home">Soybean</a> that aims to provide rice
+							reference genome with standardized and accurategene annotations based on a huge volume of omics data
+							and a large number of rice-related literatures.
+						</p>
+					<hr>
+						<h4>Data Statistics</h4>
+						<ul class="list-inline">
+							<li>
+								<h4>8
+									<small> Tissues</small>
+								</h4>
+							</li>
+							<li>
+								<h4>17
+									<small> Projects</small>
+								</h4>
+							</li>
+							<li>
+								<h4>218
+									<small> Experiments</small>
+								</h4>
+							</li>
+							<br>
+							<li>
+								<h4>10,025,602
+									<small> Gene Expression Profiles</small>
+								</h4>
+							</li>
+							<li>
+								<h4>11,457,912
+									<small> Transcript Expression Profiles</small>
+								</h4>
+							</li>
+						</ul>
+					<hr>
+				</div>
+				<div class="col-md-5">
+					<div class="imgbox">
+						<ul>
+							<li style="display: block" title="Expression Profiles - Heatmap chart"><img
+									src="{% static 'images/heatmap.png' %}"/></li>
+							<li title="Expression Profiles - Line chart"><img src="{% static 'images/line.png' %}"/></li>
+							<li title="Expression Profiles - Box plot chart"><img src="{% static 'images/boxplot.png' %}"/>
+							</li>
+						</ul>
+						<div class="title_bg common"></div>
+						<div class="title common"></div>
+						<div class="pager common">
+							<ul>
+								<li>3</li>
+								<li>2</li>
+								<li style="background:#226687;">1</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-8">
+					<h4>Release Notes</h4>
+					<ul>
+						<li>Co-expression network analysis has been integrated into RED. [April 2016]</li>
+						<li>Classification of Tissue-specific & House-keeping Genes have been integrated into RED.  [March 2016]</li>
+						<li>RED is regarded as one of the important database resources of <a href="http://bigd.big.ac.cn/gene" target="_blank">Gene Expression Nebulas</a> in  BIG Data Center. [January 2016]</li>
+						<li>RED is updated with bug fixed and new features added.[May 2015]</li>
+						<li>RED is publicly accessible.[April 2015]</li>
+					</ul>
+				</div>
+				<div class="col-md-4">
+					<h4>Global Visitors</h4>
+					<div style="display:inline-block;width:280px;">
+						<script async="async"
+								src="//rj.revolvermaps.com/0/0/7.js?i=99fi64tjtdt&amp;amp;m=0&amp;amp;c=ff0000&amp;amp;cr1=ffffff&amp;amp;sx=0"
+								type="text/javascript">
+						</script>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+	
+

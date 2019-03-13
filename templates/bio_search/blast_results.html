@@ -1,0 +1,37 @@
+{% extends 'bio_base/base.html' %}
+{% load staticfiles %}
+{% block title %} Blast results {% endblock %}
+{% block content %}
+<div class="container">
+	<section class="main-container">
+		<div class="container">
+			<div class="row">
+				<div class="main col-md-12">
+					<pre>
+						{% for content in seq_info %}
+							<a href=#blast_res{{ forloop.counter }} >{{ content }}</a>
+						{% endfor %}
+					</pre>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	{% for content in blast_results %}
+		<section class="main-container">
+			<div class="container">
+				<div class="row">
+					<div class="main col-md-12">
+						<a id=blast_res{{ forloop.counter }}>	
+							<pre>
+								{{ content.description }}
+								{{ content.results }}
+							</pre>
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+	{% endfor %}
+</div>
+{% endblock %}
