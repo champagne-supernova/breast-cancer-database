@@ -37,7 +37,18 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+	'bio_home',
 	'bio_search',
+	'bio_genome',
+	'bio_publication',
+	'bio_reports',
+	'bio_expr',
+	'bio_go',
+	'bio_kegg',
+	'bio_microRNA',
+	'bio_omic_wiki',
+	'bio_variation',
+	'bio_homolog'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -59,11 +70,23 @@ WSGI_APPLICATION = 'bio_database.wsgi.application'
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    'default':{
+	'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'biodb',
+        'USER': 'biodb',
+        'PASSWORD': 'qwer358!',
+        'HOST': '192.168.1.79',
+        'PORT': '8000',
     }
 }
+
+# DATABASES = {
+   # 'default' : {
+      # 'ENGINE' : 'django_mongodb_engine',
+      # 'NAME' : 'cancer_database'
+   # }
+# }
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
