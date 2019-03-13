@@ -8,3 +8,109 @@ Created: August 2014
 License URI: http://wrapbootstrap.com
 File Description: Place here your custom CSS styles
 */
+#canvas {
+	border: solid 1px gray;
+	margin: 10px;
+	height: 700px;
+}
+
+.h2-color {
+	color: #E6E6FA;
+}
+
+div#btn-id1 button.btn.btn-default.btn-lg.btn-danger {
+       margin-left: 564px;
+	   margin-top: 30px;
+}
+div#btn-id1 .btn.btn-lg {
+	padding: 10px 12px;
+	font-size: 18px;
+	min-width: 150px;
+	min-height: 20px;
+}
+
+.panel.panel-default {
+	margin-top: 20px;
+}
+
+div #content_id_1 {
+	height: 40px;
+	padding-left: 10px;
+	padding-top: 6px;
+	font-size: 18px;
+}
+
+div#content_id_2 {
+	background-color: #f5f5f5;
+	line-height: 12px;
+	padding: 0px;
+	width: 220px;
+}
+
+div#content_id_2 ul.nav.bs-docs-sidenav {
+	font-size: 16px;
+}
+
+div#content_id_2 ul.nav.bs-docs-sidenav li.active {
+	border-left: 5px solid #463265;
+}
+
+div#content_id_2 a {
+	color: #337ab7;
+}
+
+div#content_id_4 {
+    margin-top: 0;
+    height: 780px;
+    padding-left: 20px;
+    padding-top: 25px;
+    background-color: #fff;
+}
+
+div#content_id_4 div.panel-heading {
+	background-color: #fff;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+div#content_id_4 div.panel-body p {
+	font-weight: bold;
+}
+
+div#content_id_4 div.panel-body div.col-md-10 p {
+	margin-bottom: 5px;
+}
+
+div#content_id_4 div.panel-body div.col-md-10 p a {
+	font-size: 12px;
+	color: #337ab7;
+}
+
+div#content_id_4 div.panel-body hr {
+	margin-top: 30px;
+	margin-top: 15px;
+}
+
+div#content_id_4 div.panel-body a button {
+	min-width: 100px;
+	margin-top: 0px;
+	margin-bottom: 0;
+	margin-left: 208px;
+}
+
+div#collapseOne form.form-horizontal{
+	font-size: 14px;	
+}
+
+div#report_signin header h1 {
+	margin-left: -50px;	
+}
+
+div#report_signin {
+	position: relative;
+	margin-top: 10px;
+	margin-bottom: 80px;
+	margin-left: 70px;
+}
+
+

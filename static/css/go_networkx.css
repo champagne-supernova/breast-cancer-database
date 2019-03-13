@@ -1,0 +1,45 @@
+/*
+Theme Name: iDea - Clean & Powerful Bootstrap Theme
+Author: HtmlCoder
+Author URI: http://www.htmlcoder.me
+Author e-mail: htmlcoder.me@gmail.com
+Version: 1.0.0 
+Created: August 2014
+License URI: http://wrapbootstrap.com
+File Description: Place here your custom CSS styles
+*/
+#canvas {
+	border: solid 1px gray;
+	margin: 5px;
+	height: 900px;
+	background-color: #3D3D3D;
+}
+
+#infoBoxHolder {
+	z-index: 500;
+	position: absolute;
+	left: 5px;
+}
+
+#infoBox {
+    border: 1px solid #999;
+    padding: 8px;
+    background-color: whitesmoke;
+    opacity:0.9;
+    position: relative;
+    width: 170px;
+    //height: 60px;
+    font-family: arial, helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 11px;
+}
+
+#infoBox:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+

@@ -1,0 +1,27 @@
+text{
+	font-family: "Helvetica Neue", helvetica, sans-serif;
+}
+
+.name{
+	font-weight: bold;
+	font-size: 8px;
+}
+
+.about{
+	fill: #777;
+	font-size: smaller;
+}
+
+.link{
+	fill: none;
+	stroke: green;
+	stroke-width: 2;
+	shape-rendering: crispedges;
+
+}
+
+/*.node{
+	fill: #ccc;
+	stroke: #ccc;
+	stroke-width: 2px;
+}*/

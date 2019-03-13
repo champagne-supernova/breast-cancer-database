@@ -1,0 +1,302 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2015-1-29, 15:29:49
+    Author     : Administrator
+*/
+th {
+    vertical-align: middle !important;
+}
+
+td {
+    vertical-align: middle !important;
+}
+
+.shadow {
+    box-shadow: 0 0 2em 2em;
+}
+
+.callout {
+    padding: 15px 15px 0 15px;
+    margin: 20px 0;
+    border: 1px solid #eee;
+    border-left-width: 5px;
+    border-radius: 0
+}
+
+.callout h4 {
+    margin-top: 0;
+    margin-bottom: 15px
+}
+
+.callout p:last-child {
+    margin-bottom: 0
+}
+
+.callout code {
+    border-radius: 3px
+}
+
+.callout + .callout {
+    margin-top: -5px
+}
+
+.callout-danger {
+    border-left-color: #ce4844
+}
+
+.callout-danger h4 {
+    color: #ce4844
+}
+
+.callout-warning {
+    border-left-color: #aa6708
+}
+
+.callout-warning h4 {
+    color: #aa6708
+}
+
+.callout-info {
+    border-left-color: #5bc0de
+}
+
+.callout-info h4 {
+    color: #5bc0de
+}
+
+.callout-primary {
+    border-left-color: #00AA88
+}
+
+.callout-primary h4 {
+    color: #00AA88
+}
+
+/*pic**/
+img {
+    border-style: none;
+}
+
+.imgbox {
+    width: 450px;
+    height: 380px;
+}
+
+.imgbox img {
+    width: 450px;
+    height: 380px;
+    padding-bottom: 30px;
+}
+
+.imgbox ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.imgbox ul li {
+    display: none;
+}
+
+.title_bg {
+    z-index: 1;
+    background-color: #555;
+    filter: alpha(opacity=50);
+    -moz-opacity: 0.5;
+    opacity: 0.5;
+}
+
+.title {
+    z-index: 2;
+    color: #fff;
+    text-indent: 10px;
+    font-size: 12px;
+    line-height: 30px;
+}
+
+.pager {
+    z-index: 3;
+}
+
+.common {
+    position: relative;
+    height: 30px;
+    margin-top: -30px;
+}
+
+.pager ul {
+    margin-bottom: 5px;
+}
+
+.pager ul li {
+    float: right;
+    color: #FFF;
+    font-size: 12px;
+    display: block;
+    width: 30px;
+    height: 30px;
+    margin-left: 4px;
+    text-align: center;
+    line-height: 30px;
+    background-color: #00AA88;
+    cursor: pointer;
+}
+
+/**panel head**/
+.my-panel-heading {
+    color: #1b809e;
+    border-left: 10px solid #00AA88;
+    padding: 10px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    background-color: #f5f5f5;
+}
+
+.my-panel-heading > .dropdown .dropdown-toggle {
+    color: inherit
+}
+
+.my-panel-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight: bold;
+    color: inherit
+}
+
+.my-panel-title > a {
+    color: inherit
+}
+
+/***/
+.myform {
+    margin-right: 0;
+    margin-left: 0;
+    margin-bottom: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px 4px 4px 4px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.clo {
+    background: #a94442;
+    height: 19px;
+    font-size: 12px;
+    color: #fff;
+    opacity: 0.3;
+}
+
+.clo:hover,
+.clo:focus {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+}
+
+.list-inline > li.disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+li.disabled a {
+    color: #777
+}
+
+.banner {
+    width: 100%;
+    min-height: 125px;
+    background: url("/static/img/bg.png") repeat-x #31b0d5;
+    margin-top:0;
+    padding-top:0;
+}
+
+.banner .logo{
+    float: left;
+    margin-top:0;
+}
+.banner .logo h1{
+    float: left;
+    padding-top:25px;
+    color: #00AA88;
+    text-shadow: 3px 3px 3px #ccc;
+}
+
+.banner .logo h1 span{
+    font-weight: bolder;
+    padding-right: 15px;
+    color: #14376c;
+    border-right: 2px solid #eee;
+}
+
+.banner .logo img{
+    float: left;
+    padding:10px 15px;
+}
+
+.banner form {
+    padding-top: 45px;
+    padding-right: 15px;
+}
+
+.banner .form-inline .input-group .form-control {
+    width: 400px;
+}
+
+.navbar-brand img{
+    height: 25px;
+}
+
+.navbar-inverse {
+    background: #0A8;
+    border:0;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #f5f5f5;
+}
+.navbar-inverse .navbar-right > li > a {
+    color: #f5f5f5;
+}
+.navbar-inverse .navbar-right > li > a > img{
+    position: relative;
+    height: 25px;
+}
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-nav > li > a:focus {
+    color: #555;
+    background-color: inherit;
+}
+
+
+#network {
+    display: block;
+    width: 1170px;
+    height: 700px;
+    border: 1px solid lightgray;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.list-unstyled li {
+    padding-bottom: 10px;
+}
+
+.label-define {
+    padding: 6px 6px;
+    font-size: 12px;
+    font-weight: bolder;
+    line-height: 1.5;
+    margin-right: 10px;
+}
+.col-md-8.tab-content.myform {
+	    padding-top: 0px;
+}

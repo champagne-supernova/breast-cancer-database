@@ -302,7 +302,7 @@ tbody {
 .header {
 	padding: 20px 0;
 	border-bottom: 1px solid #eaeaea;
-	background-color: #fff;
+	background-color: #241916;
 }
 .header.header-small {
 	padding: 10px 0;
@@ -4851,7 +4851,8 @@ ul.tweets li span {
 .slider-banner-container {
 	width: 100%;
 	position: relative;
-	padding: 0;
+	padding-left: 100px;
+	padding-right: 100px;
 }
 .slider-banner,
 .slider-banner-2,
@@ -4892,7 +4893,7 @@ ul.tweets li span {
 .slideshow-boxed .slider-banner-container {
 	padding: 10px;
 	background: #fff;
-	border: 1px solid #eaeaea;
+	border: 10px solid #eaeaea;
 }
 .slideshow-boxed .tp-caption {
 	margin-left: 20px !important;

@@ -4821,6 +4821,7 @@ a.thumbnail.active {
   padding-left: 0;
   margin-bottom: 20px;
 }
+
 .list-group-item {
   position: relative;
   display: block;
@@ -4828,6 +4829,11 @@ a.thumbnail.active {
   margin-bottom: -1px;
   background-color: #fff;
   border: 1px solid #ddd;
+}
+
+.nav_cus {
+	float: left;
+	width: 150px;
 }
 .list-group-item:first-child {
   border-top-left-radius: 4px;

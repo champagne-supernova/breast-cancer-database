@@ -1,0 +1,15 @@
+.lit-list {
+	padding-left:20px
+}
+.lit-list .cite_author {
+	float:left;
+	margin-right:10px
+}
+.list-group.side_nav .list-group-item {
+	margin-left:0;
+	padding-left:15px
+}
+.list-group.side_nav i {
+	margin-right:4px !important;
+	width:10px !important
+}

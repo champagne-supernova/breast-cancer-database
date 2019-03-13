@@ -1,0 +1,169 @@
+html {
+	position: relative;
+	min-height: 100%;
+}
+
+body {
+	margin-bottom: 60px;
+}
+
+.intro_img img {
+	margin-bottom: 5px;
+	border: 1px #e7e7e7 solid;
+	border-radius: .5em .5em .5em .5em;
+}
+
+#back-to-top {
+	position: fixed;
+	bottom: 30px;
+	right: 10px;
+}
+
+#back-to-top a {
+	text-align: center;
+	text-decoration: none;
+	color: #5bc0de;
+	display: block;
+	width: 80px;
+	font-size: 30px;
+	-moz-transition: color 0.5s;
+	-webkit-transition: color 0.5s;
+	-o-transition: color 0.5s;
+}
+
+#back-to-top a: hover {
+	color: #5bc0de;
+}
+
+.footer {
+	position: relative;
+	bottom: 0;
+	width: 100%;
+	padding-top: 20px;
+	background-color: #f8f8f8;
+	border-color: #e7e7e7;
+	min-height: 60px;
+}
+
+footer img {
+	width: 30px;
+}
+
+.jumbotron {
+	background-color: #e7e7e7 !important;
+	padding-top: 68px !important;
+}
+
+.carousel-caption {
+	color: white;
+	background-color: rgba(231, 231, 231, 0.5);
+	border-radius: 20px;
+	padding: 0 0 0 0;
+	margin-bottom: 25px;
+}
+
+.carousel-caption h4 {
+	color: #337ab7;
+}
+
+.carousel img {
+	border-radius: 5px;
+	min-height: 240px;
+}
+
+.carousel-indicators li {
+	border-color: white;
+	background-color: #e7e7e7;
+}
+
+.carousel-indicators .active {
+	background-color: #337ab7;
+}
+
+.content {
+	margin-top: 40px;
+	padding-bottom: 40px;
+}
+
+.modal-dialog {
+	width: 65% !important;
+}
+
+.row {
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+.bootstrap-table .dropdown-menu {
+	padding-left: 20%;
+}
+
+.chr-map, .dna-map, .chr-details, .pro-map, .pro-details, .dna-details, .jbrowse-map {
+	border: 1px grey dotted;
+	padding: 20px 20px 20px 20px;
+	border-radius: 1em 1em 1em 1em;
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+
+.chr-map {
+	min-width: 900px;
+}
+
+.pro-map {
+	min-width: 560px;
+}
+
+.full-screen .pro-details, .full-screen .dna-details {
+	position: fixed;
+	top: 15%;
+	right: 3%;
+	max-width: 500px;
+	background-color: rgba(248, 248, 248, 0.2);
+}
+
+.saved, .pro-details .saved {
+	margin-bottom: 20px;
+	padding: 10px 20px 10px 20px;
+	border-radius: 1em 1em 1em 1em;
+	background-color: #f8f8f8;
+	border-bottom: 1px grey solid;
+}
+
+.chr-details {
+	margin-top: 10px;
+}
+
+.chr-details img {
+	width: 3%;
+	margin-left: 45%;
+}
+
+.table>tbody>tr>td, .table>tbody>tr>th {
+	border: none !important;
+}
+
+.search-box {
+	border-radius: 1em 1em 1em 1em;
+	background-color: #f8f8f8;
+}
+
+.search-box h4 {
+	color: #777;
+}
+
+.search-box .input-group {
+	margin-bottom: 20px;
+}
+
+.search-box .input-group .chr-v, .search-box .input-group .Start-v, .search-box .input-group .End-v {
+	color: red;
+}
+
+.search-box ul {
+	list-style: none;
+}
+
+.jumbotron p {
+	font-size: 15px !important;
+}

@@ -1,0 +1,9 @@
+div.panel-heading {
+	height: 40px;
+}
+
+div.panel-heading > h3 {
+	font-size: 14px;
+	font-weight: bold;
+	padding: 10px 15px 10px 15px;
+}
