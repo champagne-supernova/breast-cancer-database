@@ -34,5 +34,10 @@
                 {% endfor %}
             </table>
         {% endif %}
+        
+        {% if TCGA %}
+            <h2><a href="{% url "download_tcga" info.sample_id info.experimental_strategy info.file_name %}">download</a></h2>
+            <h2><a href="{% url "patient_image" sample_id %}">Related Image Data</a></h2>
+        {% endif %}
     </div>
 {% endblock %}

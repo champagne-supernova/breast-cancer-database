@@ -1,0 +1,39 @@
+{% extends 'bio_cancer/bio_cancer_base.html' %}
+{% load staticfiles %}
+{% block title %} Cancer {% endblock %}
+{% block content %}
+    <div style = "text-indent: 2em">
+        <h1> {{ info.serie_id }} </h1>>
+        <table>
+            {% for key, vaule in info.items %}
+            <tr>
+                <th>{{ key }}</th>
+                <td>{{ vaule }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% if collection %}
+            <h2> Collection </h2>
+            <table>
+                {% for key, value in collection.items %}
+                    <tr>
+                        <th>{{ key }}</th>
+                        <td>{{ value }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+        <h2><a href="{% url 'download_image' info.serie_id %}">download</a></h2>
+        <br/><br/>
+        <h1>Related Genomic Data</h1>
+        <h2><a href= "/cancer/genomic_detail/{{info.patient_id}}/RNA-Seq">RNA-seq</a></h2>
+        {% if snv %}
+            <h2><a href= "/cancer/genomic_detail/{{info.patient_id}}/WXS">SNV</a></h2>
+        {% endif %}    
+        <h2><a href= "/cancer/genomic_detail/{{info.patient_id}}/Methylation%20Array">DNA Methylation</a></h2>
+    </div>
+    {% for jpg in jpg_path %}
+        <img id='jpg' src= "{% static jpg %}" alt="图片加载失败" width="300" />
+    {% endfor %}
+ 
+{% endblock %}
