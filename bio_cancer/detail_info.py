@@ -27,6 +27,7 @@ class Detail_Info(ConnectDb):
         self.info = {}
         self.analysis = {}
         self.input_files = {}
+        self.collection = {}
         ConnectDb.__init__(self)
 
     def find_sample(self, sample_id, type_id):
@@ -43,18 +44,34 @@ class Detail_Info(ConnectDb):
             self.input_files = tmp_val['input_files'][0]
             del tmp_val['input_files']
         elif type_id in ['WXS']:
-            tmp_val = list(self.TCGA_SNV.find({'patient_id': sample_id}))[0]
-            tmp_val['file_size'] = str(int(tmp_val['file_size']) / 1024) + 'MB'
-            self.analysis = tmp_val['analysis'][0]
-            del tmp_val['analysis']
-            self.input_files = tmp_val['input_files'][0]
-            del tmp_val['input_files']
+            try:
+                tmp_val = list(self.TCGA_SNV.find({'patient_id': sample_id}))[0]
+                tmp_val['file_size'] = str(int(tmp_val['file_size']) / 1024) + 'MB'
+                self.analysis = tmp_val['analysis'][0]
+                del tmp_val['analysis']
+                self.input_files = tmp_val['input_files'][0]
+                del tmp_val['input_files']
+            except:
+                print("No SNV Data!")
         elif type_id in ['Methylation Array']:
             tmp_val = list(self.TCGA_meth.find({'patient_id': sample_id}))[0]
             tmp_val['file_size'] = str(int(tmp_val['file_size'])/1024)+'MB'
             self.analysis = tmp_val['analysis'][0]
             del tmp_val['analysis']
+        else:
+            tmp_val = list(self.image.find({'serie_id': type_id}))[0]
+            self.collection = tmp_val['collection'][0]
+            del tmp_val['collection']
         if tmp_val:
             del tmp_val['_id']
         self.info = tmp_val
-        return self.info, self.analysis, self.input_files
+        return self.info, self.analysis, self.input_files, self.collection
+
+if __name__ == '__main__':
+    object = Detail_Info()
+    try:
+        info, ana, inp, col = object.find_sample('TCGA-AO-A129', 'WXS')
+        print(info)
+    except:
+        print(info)
+

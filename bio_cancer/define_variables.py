@@ -9,7 +9,9 @@
 ####################################################################
 
 SAMPLE_SOURCE = [
-		'Primary Tumor'               , 
+		'Primary Tumor'               ,
+		'Solid Tissue Normal',
+		'Metastatic',
 		'T-47D'                       , 
 		'MDA-MB-231'                  , 
 		'HMLE breast cancer cell line',
@@ -28,7 +30,17 @@ EXPERI_STRATAGY = [
 		'3C'       , 
 		'Hi-C'
 	]
-	
+
+Imaging_Modality = [
+		'MR',
+		'MG'
+]
+
+Manufacturer = [
+		'GE MEDICAL SYSTEMS',
+		'SIEMENS'
+]
+
 COMMON_IMAGES  = ['serie_id', 'description', 'modality', 'size']
 COMMON_GENOMIC = ['sample id', 'description', 'platform', 'sample_source']
 
